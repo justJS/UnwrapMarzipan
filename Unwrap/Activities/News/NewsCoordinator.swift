@@ -6,8 +6,13 @@
 //  Copyright © 2018 Hacking with Swift.
 //
 
-import SafariServices
 import UIKit
+
+// MARZIPAN: Some frameworks are not available on macOS
+#if os(iOS) && !MARZIPAN
+import SafariServices
+#endif
+
 
 /// Manages everything launched from the News tab in the app.
 class NewsCoordinator: Coordinator {
@@ -49,7 +54,13 @@ class NewsCoordinator: Coordinator {
     /// Loads the Hacking with Swift store.
     @objc func buyBooks() {
         let storeURL = URL(staticString: "https://www.hackingwithswift.com/store")
+        
+        // MARZIPAN: SafariServices is not available on macOS
+        #if os(iOS) && !MARZIPAN
         let viewController = SFSafariViewController(url: storeURL)
         navigationController.present(viewController, animated: true)
+        #else
+        UIApplication.shared.open(storeURL)
+        #endif
     }
 }

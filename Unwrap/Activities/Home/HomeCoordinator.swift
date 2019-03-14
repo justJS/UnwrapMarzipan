@@ -6,8 +6,12 @@
 //  Copyright © 2018 Hacking with Swift.
 //
 
-import SafariServices
 import UIKit
+
+// MARZIPAN: Some frameworks are not available on macOS
+#if os(iOS) && !MARZIPAN
+import SafariServices
+#endif
 
 /// Manages everything launched from the Home tab in the app.
 class HomeCoordinator: Coordinator, AlertShowing {
@@ -98,6 +102,8 @@ class HomeCoordinator: Coordinator, AlertShowing {
 
     /// HTTP(S) URLs should be opened internally, but all others – e.g. mailto: – should be opened by the system.
     func open(_ url: URL) {
+        // MARZIPAN: SafariServices is not available on macOS
+        #if os(iOS) && !MARZIPAN
         if url.scheme?.hasPrefix("http") == true {
             // we'll open web URLs inside the app
             let viewController = SFSafariViewController(url: url)
@@ -106,6 +112,9 @@ class HomeCoordinator: Coordinator, AlertShowing {
             // send all other types of URL over to the main application to figure out
             UIApplication.shared.open(url)
         }
+        #else
+        UIApplication.shared.open(url)
+        #endif
     }
 
     /// Show credits for the app.
