@@ -55,7 +55,7 @@ class RearrangeTheLinesViewController: UIViewController, Storyboarded, Practicin
     }
 
     @objc func hint() {
-        showAlert(body: practiceData.hint)
+        showAlert(body: practiceData.hint, on: self)
     }
 
     @objc func skip() {

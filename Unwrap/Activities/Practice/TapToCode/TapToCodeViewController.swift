@@ -86,7 +86,7 @@ class TapToCodeViewController: UIViewController, Storyboarded, PracticingViewCon
     }
 
     @objc func hint() {
-        showAlert(body: "All the code components need to be used somewhere – try rearranging them until you're happy.")
+        showAlert(body: "All the code components need to be used somewhere – try rearranging them until you're happy.", on: self)
     }
 
     @objc func skip() {

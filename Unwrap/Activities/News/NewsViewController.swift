@@ -9,7 +9,7 @@
 import UIKit
 
 /// The main view controller you see in  the Challenges tab in the app.
-class NewsViewController: UITableViewController, Storyboarded, UIViewControllerPreviewingDelegate {
+class NewsViewController: UITableViewController, Storyboarded {
     var coordinator: NewsCoordinator?
 
     /// This handles all the rows in our table view, including downloading news.
@@ -35,7 +35,10 @@ class NewsViewController: UITableViewController, Storyboarded, UIViewControllerP
         tableView.tableFooterView = UIView()
         emptyDataSource.delegate = self
 
+        // MARZIPAN: 3D Touch is disabled on macOS for now
+        #if os(iOS) && !MARZIPAN
         registerForPreviewing(with: self, sourceView: tableView)
+        #endif
 
         // Allow folks to pull to refresh stories. Honestly, this will never actually do anything because it's not like I publish *that* often, but it's a bit like close buttons on an elevator – people expect them to work.
         refreshControl = UIRefreshControl()
@@ -75,7 +78,11 @@ class NewsViewController: UITableViewController, Storyboarded, UIViewControllerP
         let article = dataSource.article(at: indexPath.row)
         coordinator?.read(article)
     }
+}
 
+// MARZIPAN: 3D Touch is disabled on macOS for now
+#if os(iOS) && !MARZIPAN
+extension NewsViewController: UIViewControllerPreviewingDelegate {
     /// Called when the user 3D touches on a news story.
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = tableView.indexPathForRow(at: location) {
@@ -92,3 +99,4 @@ class NewsViewController: UITableViewController, Storyboarded, UIViewControllerP
         coordinator?.startReading(using: viewControllerToCommit)
     }
 }
+#endif

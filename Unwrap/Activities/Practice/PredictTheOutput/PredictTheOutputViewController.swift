@@ -58,7 +58,7 @@ class PredictTheOutputViewController: UIViewController, Storyboarded, Practicing
     }
 
     @objc func hint() {
-        showAlert(body: practiceData.hint)
+        showAlert(body: practiceData.hint, on: self)
     }
 
     @objc func skip() {

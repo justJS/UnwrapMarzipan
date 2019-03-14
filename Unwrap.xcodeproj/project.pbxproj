@@ -95,7 +95,6 @@
 		518FAE7720E4269E007F4675 /* MultipleSelectReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518FAE7620E4269E007F4675 /* MultipleSelectReviewViewController.swift */; };
 		518FAE7920E433A5007F4675 /* MultipleSelectReviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518FAE7820E433A5007F4675 /* MultipleSelectReviewDataSource.swift */; };
 		5192241C210E2767007D7D74 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192241B210E2767007D7D74 /* DarkTheme.swift */; };
-		5192587120E2A46500A85704 /* Swift42.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192587020E2A46500A85704 /* Swift42.swift */; };
 		5192587320E3A11200A85704 /* NSAttributedString-Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192587220E3A11200A85704 /* NSAttributedString-Formatting.swift */; };
 		519CD3D020EBA208007110BD /* RearrangeTheLines.json in Resources */ = {isa = PBXBuildFile; fileRef = 519CD3CF20EBA208007110BD /* RearrangeTheLines.json */; };
 		519CD3D220EBA35B007110BD /* RearrangeTheLinesPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519CD3D120EBA35B007110BD /* RearrangeTheLinesPractice.swift */; };
@@ -607,6 +606,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DEB0FC60868823894F964FD /* Pods-UnwrapUITests.marzipan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapUITests.marzipan.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapUITests/Pods-UnwrapUITests.marzipan.xcconfig"; sourceTree = "<group>"; };
 		1042D2A80E9E96DA0B7C6F35 /* Pods_Unwrap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unwrap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6890166B1F5B8EB91C8313 /* Pods-UnwrapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapTests/Pods-UnwrapTests.release.xcconfig"; sourceTree = "<group>"; };
 		4C41E3122207C678009D580E /* ReviewPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPractice.swift; sourceTree = "<group>"; };
@@ -698,7 +698,6 @@
 		518FAE7620E4269E007F4675 /* MultipleSelectReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectReviewViewController.swift; sourceTree = "<group>"; };
 		518FAE7820E433A5007F4675 /* MultipleSelectReviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectReviewDataSource.swift; sourceTree = "<group>"; };
 		5192241B210E2767007D7D74 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
-		5192587020E2A46500A85704 /* Swift42.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift42.swift; sourceTree = "<group>"; };
 		5192587220E3A11200A85704 /* NSAttributedString-Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString-Formatting.swift"; sourceTree = "<group>"; };
 		519CD3CF20EBA208007110BD /* RearrangeTheLines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RearrangeTheLines.json; sourceTree = "<group>"; };
 		519CD3D120EBA35B007110BD /* RearrangeTheLinesPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RearrangeTheLinesPractice.swift; sourceTree = "<group>"; };
@@ -1194,8 +1193,10 @@
 		51FE139420E25F1100F29889 /* range-operators.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "range-operators.html"; sourceTree = "<group>"; };
 		51FE139520E25F1100F29889 /* protocol-extensions.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "protocol-extensions.mp4"; sourceTree = "<group>"; };
 		51FE151D20E2814E00F29889 /* StudyReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyReview.swift; sourceTree = "<group>"; };
+		7CF95BB4D9729303AAFBE2AA /* Pods-Unwrap.marzipan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unwrap.marzipan.xcconfig"; path = "Pods/Target Support Files/Pods-Unwrap/Pods-Unwrap.marzipan.xcconfig"; sourceTree = "<group>"; };
 		879EE4E91437B6378BB24AE1 /* Pods-Unwrap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unwrap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unwrap/Pods-Unwrap.release.xcconfig"; sourceTree = "<group>"; };
 		AA4718A94B659E9A42AEC33E /* Pods-UnwrapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapTests/Pods-UnwrapTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B7C6A8046BFCCB9F3A154061 /* Pods-UnwrapTests.marzipan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapTests.marzipan.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapTests/Pods-UnwrapTests.marzipan.xcconfig"; sourceTree = "<group>"; };
 		BB24D72F99ED46CE1F202A82 /* Pods-Unwrap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unwrap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unwrap/Pods-Unwrap.debug.xcconfig"; sourceTree = "<group>"; };
 		BE61552411B754C7764869FE /* Pods-UnwrapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapUITests/Pods-UnwrapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE64715D944F01A45D8EE2EB /* Pods-UnwrapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapUITests/Pods-UnwrapUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1590,7 +1591,6 @@
 				51CC13662065607C00F37A67 /* Main.storyboard */,
 				51CC136B2065607F00F37A67 /* LaunchScreen.storyboard */,
 				51CC136E2065607F00F37A67 /* Info.plist */,
-				5192587020E2A46500A85704 /* Swift42.swift */,
 				511FD6B221065BF80023E92C /* Unwrap.swift */,
 			);
 			path = Unwrap;
@@ -2121,6 +2121,9 @@
 				3F6890166B1F5B8EB91C8313 /* Pods-UnwrapTests.release.xcconfig */,
 				BE61552411B754C7764869FE /* Pods-UnwrapUITests.debug.xcconfig */,
 				BE64715D944F01A45D8EE2EB /* Pods-UnwrapUITests.release.xcconfig */,
+				7CF95BB4D9729303AAFBE2AA /* Pods-Unwrap.marzipan.xcconfig */,
+				B7C6A8046BFCCB9F3A154061 /* Pods-UnwrapTests.marzipan.xcconfig */,
+				0DEB0FC60868823894F964FD /* Pods-UnwrapUITests.marzipan.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2697,7 +2700,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Unwrap/Pods-Unwrap-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Unwrap/Pods-Unwrap-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/MKRingProgressView/MKRingProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
@@ -2718,7 +2721,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Unwrap/Pods-Unwrap-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unwrap/Pods-Unwrap-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		20E5B68BFBC8CF394AB3C134 /* [CP] Check Pods Manifest.lock */ = {
@@ -2773,7 +2776,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Marzipan\" ]; then\ncd /Users/Julian/dotJS/Github/Marzipanify/Temp\nrm -rf Unwrap.app\nrm -rf Entitlements-*.plist\ncp -f -R ${BUILT_PRODUCTS_DIR}/Cards.app /Users/Julian/dotJS/Github/Marzipanify/Temp\n./marzipanify Unwrap.app\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Marzipan\" ]; then\ncd /Users/Julian/dotJS/Github/Marzipanify/Temp\nrm -rf Unwrap.app\nrm -rf Entitlements-*.plist\ncp -f -R ${BUILT_PRODUCTS_DIR}/Unwrap.app /Users/Julian/dotJS/Github/Marzipanify/Temp\n./marzipanify Unwrap.app\nfi\n";
 		};
 		C90D15D421EA485C004116DB /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2859,7 +2862,6 @@
 				51C5642D20CCC5480093030C /* Chapter.swift in Sources */,
 				5153F49220EF7430009E829D /* LearnCoordinator.swift in Sources */,
 				51A4476B2108A108005D8665 /* Badge.swift in Sources */,
-				5192587120E2A46500A85704 /* Swift42.swift in Sources */,
 				51C5642920CCC2520093030C /* LearnDataSource.swift in Sources */,
 				511FD6C62107CE9C0023E92C /* AlertHandling.swift in Sources */,
 				510539F8211300D400B28328 /* UIImage-Sharing.swift in Sources */,
@@ -3316,7 +3318,7 @@
 		};
 		B98292412239F1A4004EB968 /* Marzipan */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB24D72F99ED46CE1F202A82 /* Pods-Unwrap.debug.xcconfig */;
+			baseConfigurationReference = 7CF95BB4D9729303AAFBE2AA /* Pods-Unwrap.marzipan.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -3326,6 +3328,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMARZIPAN";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.unwrapswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3334,7 +3337,7 @@
 		};
 		B98292422239F1A4004EB968 /* Marzipan */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA4718A94B659E9A42AEC33E /* Pods-UnwrapTests.debug.xcconfig */;
+			baseConfigurationReference = B7C6A8046BFCCB9F3A154061 /* Pods-UnwrapTests.marzipan.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -3355,7 +3358,7 @@
 		};
 		B98292432239F1A4004EB968 /* Marzipan */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE61552411B754C7764869FE /* Pods-UnwrapUITests.debug.xcconfig */;
+			baseConfigurationReference = 0DEB0FC60868823894F964FD /* Pods-UnwrapUITests.marzipan.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

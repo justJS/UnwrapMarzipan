@@ -6,7 +6,6 @@
 //  Copyright © 2018 Hacking with Swift.
 //
 
-import SwiftEntryKit
 import UIKit
 
 /// Manages everything launched from the Challenges tab in the app.

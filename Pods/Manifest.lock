@@ -15,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - DZNEmptyDataSet (~> 1.8)
   - MKRingProgressView (~> 2.0)
+  - QuickLayout
   - SDWebImage (~> 4.0)
   - SourceEditor (from `https://github.com/louisdh/source-editor.git`, branch `master`)
   - SwiftEntryKit (= 0.8.4)
@@ -50,6 +51,6 @@ SPEC CHECKSUMS:
   SwiftEntryKit: f0dd54bb0fb9f234738cd15a32365265cb975be8
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 683b15c20169641a3df515f1b9c38295411cc238
+PODFILE CHECKSUM: 0d6348ddcb01855b3eb605dd7880062a137c8818
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0

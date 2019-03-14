@@ -7,13 +7,11 @@
 //
 
 import Foundation
-import GameplayKit
 
 extension Double: TypeGenerating {
     static func randomName() -> String {
         let names = ["days", "depth", "distance", "height", "hours", "minutes", "months", "multiplier", "score", "seconds", "temperature", "weeks", "weight", "width"]
-        let chosen = names[GKRandomSource.sharedRandom().nextInt(upperBound: names.count)]
-        return chosen
+        return names.randomElement()!
     }
 
     static func makeInstance() -> String {
@@ -27,7 +25,7 @@ extension Double: TypeGenerating {
             type = ""
         }
 
-        var value = String(format: "%.4g", Float.scaledRandom())
+        var value = String(format: "%.4g", Float.random(in: 0...1000))
 
         // if we aren't declaring a type make sure we always have some numbers
         // after the decimal point otherwise this is an integer

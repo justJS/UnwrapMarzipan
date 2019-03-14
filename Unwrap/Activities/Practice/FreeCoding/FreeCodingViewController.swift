@@ -68,7 +68,7 @@ class FreeCodingViewController: UIViewController, Storyboarded, PracticingViewCo
     }
 
     @objc func hint() {
-        showAlert(body: practiceData.hint)
+        showAlert(body: practiceData.hint, on: self)
     }
 
     @objc func skip() {

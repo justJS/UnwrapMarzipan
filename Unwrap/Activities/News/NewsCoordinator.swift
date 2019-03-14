@@ -13,7 +13,6 @@ import UIKit
 import SafariServices
 #endif
 
-
 /// Manages everything launched from the News tab in the app.
 class NewsCoordinator: Coordinator {
     var navigationController: CoordinatedNavigationController
@@ -35,8 +34,13 @@ class NewsCoordinator: Coordinator {
 
     /// Creates and configures – but does not show! – a Safari view controller for a specific article. This might be called when the user tapped a story, or when they 3D touch one.
     func readViewController(for article: NewsArticle) -> UIViewController {
+        // MARZIPAN: SafariServices is not available on macOS
+        #if os(iOS) && !MARZIPAN
         let viewController = SFSafariViewController(url: article.url)
         return viewController
+        #else
+        return UIViewController()
+        #endif
     }
 
     /// Triggered when we already have a Safari view controller configured and ready to go, so we just show it.
@@ -47,14 +51,19 @@ class NewsCoordinator: Coordinator {
 
     /// Creates, configures, and presents a Safari view controller for a specific article.
     func read(_ article: NewsArticle) {
+        // MARZIPAN: SafariServices is not available on macOS
+        #if os(iOS) && !MARZIPAN
         let viewController = readViewController(for: article)
         startReading(using: viewController)
+        #else
+        UIApplication.shared.open(article.url)
+        #endif
     }
 
     /// Loads the Hacking with Swift store.
     @objc func buyBooks() {
         let storeURL = URL(staticString: "https://www.hackingwithswift.com/store")
-        
+
         // MARZIPAN: SafariServices is not available on macOS
         #if os(iOS) && !MARZIPAN
         let viewController = SFSafariViewController(url: storeURL)

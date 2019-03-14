@@ -6,8 +6,12 @@
 //  Copyright © 2018 Hacking with Swift.
 //
 
-import SwiftEntryKit
 import UIKit
+
+// MARZIPAN: Some frameworks are not available on macOS
+#if os(iOS) && !MARZIPAN
+import SwiftEntryKit
+#endif
 
 /// The first run screen for the app, explaining the basics of how things work.
 class WelcomeViewController: UIViewController, Storyboarded {
@@ -22,6 +26,11 @@ class WelcomeViewController: UIViewController, Storyboarded {
 
     /// Triggered when the user wants to end the tour at any point.
     @IBAction func skipTour(_ sender: Any) {
+        // MARZIPAN: SwiftEntryKit is not available on macOS
+        #if os(iOS) && !MARZIPAN
         SwiftEntryKit.dismiss()
+        #else
+        dismiss(animated: true)
+        #endif
     }
 }

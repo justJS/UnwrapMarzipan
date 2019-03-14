@@ -40,7 +40,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 // Put the contents of showTour in here directly avoid trying to capture `self` during an initializer.
                 let viewController = WelcomeViewController.instantiate()
-                viewController.presentAsAlert()
+                viewController.presentAsAlert(on: navigationController)
 
                 // Mark that we've run the app at least once.
                 UserDefaults.standard.set(true, forKey: HomeCoordinator.firstRunDefaultsKey)
@@ -51,7 +51,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
     /// Show the welcome screen with a short app introduction.
     func showTour() {
         let viewController = WelcomeViewController.instantiate()
-        viewController.presentAsAlert()
+        viewController.presentAsAlert(on: navigationController)
     }
 
     /// Show the help screen.
@@ -75,7 +75,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
     func shareBadge(_ badge: Badge) {
         if User.current.isBadgeEarned(badge) {
             // This badge is earned, so share it using the system share sheet.
-            showAlert(title: badge.name, body: badge.description, alternateTitle: "Share") {
+            showAlert(title: badge.name, body: badge.description, on: navigationController, alternateTitle: "Share") {
                 let image = badge.image
                 let text = "I earned the badge \(badge.name) in Unwrap. Download it here: \(Unwrap.appURL)"
 
@@ -87,7 +87,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
             let alert = AlertViewController.instantiate()
             alert.title = badge.name
             alert.body = badge.description.fromSimpleHTML()
-            alert.presentAsAlert()
+            alert.presentAsAlert(on: navigationController)
         }
     }
 

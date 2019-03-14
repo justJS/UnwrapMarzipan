@@ -57,7 +57,7 @@ class SpotTheErrorViewController: UIViewController, Storyboarded, PracticingView
     }
 
     @objc func hint() {
-        showAlert(body: practiceData.hint)
+        showAlert(body: practiceData.hint, on: self)
     }
 
     @objc func skip() {

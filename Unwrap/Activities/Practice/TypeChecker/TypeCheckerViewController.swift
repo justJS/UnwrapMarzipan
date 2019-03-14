@@ -55,7 +55,7 @@ class TypeCheckerViewController: UIViewController, Storyboarded, PracticingViewC
     }
 
     @objc func hint() {
-        showAlert(body: "Any code without an explicit type will rely on type inference instead.")
+        showAlert(body: "Any code without an explicit type will rely on type inference instead.", on: self)
     }
 
     @objc func skip() {

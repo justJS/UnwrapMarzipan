@@ -30,7 +30,7 @@ class ReviewViewController: UIViewController, AlertShowing, PracticingViewContro
     }
 
     @objc func hint() {
-        showAlert(body: review.hint)
+        showAlert(body: review.hint, on: self)
     }
 
     @objc func skip() {
