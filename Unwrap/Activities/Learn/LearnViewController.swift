@@ -30,6 +30,17 @@ class LearnViewController: UITableViewController, Storyboarded, UserTracking, UI
         dataSource.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Glossary", target: self, action: #selector(showGlossary))
+        #endif
+    }
+
     /// Refreshes everything when the user changes.
     func userDataChanged() {
         tableView.reloadData()

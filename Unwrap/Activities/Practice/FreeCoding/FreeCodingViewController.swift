@@ -61,10 +61,27 @@ class FreeCodingViewController: UIViewController, Storyboarded, PracticingViewCo
         showHintButton()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setTitle(title!)
+        Unwrap.marzipanCoordinator?.setupLeftBarButtonItem(text: "Skip", target: self, action: #selector(skip))
+        #endif
+    }
+
     /// Shows the hint button. This gets called in more than one place, because we replace it with a Done button when the text view is being edited.
     @objc func showHintButton() {
         textView.contentTextView.resignFirstResponder()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Hint", style: .plain, target: self, action: #selector(hint))
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Hint", target: self, action: #selector(hint))
+        #endif
     }
 
     @objc func hint() {
@@ -111,6 +128,12 @@ class FreeCodingViewController: UIViewController, Storyboarded, PracticingViewCo
     /// Allows users to dismiss the keyboard when they are ready, so they can tap submit
     func textViewDidBeginEditing(_ textView: SyntaxTextView) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(showHintButton))
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        Unwrap.marzipanCoordinator?.setTitle(title!)
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Done", target: self, action: #selector(showHintButton))
+        #endif
     }
 
     /// Called when the user taps a key symbol in our input accessory view.

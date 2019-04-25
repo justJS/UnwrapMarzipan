@@ -23,6 +23,18 @@ extension NSAttributedString {
         }
     }
 
+    static func html(chapterName: String) -> String {
+        let bodyContents = String(bundleName: "\(chapterName).html")
+
+        // Merge the wrapper with this page's content.
+        var finalHTML = String.wrapperHTML(allowTheming: true).replacingOccurrences(of: "[BODY]", with: bodyContents)
+
+        // Finally, replace any instances of [VIDEO-NUMBER] with the correct chapter and section.
+        finalHTML = finalHTML.replacingOccurrences(of: "[VIDEO-NUMBER]", with: chapterName)
+
+        return finalHTML
+    }
+
     /// A simple initializer that loads a chapter filename into a string, wraps it in HTML, then adds in our video.
     convenience init(chapterName: String) {
         let bodyContents = String(bundleName: "\(chapterName).html")

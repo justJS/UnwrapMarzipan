@@ -190,4 +190,8 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
     func titleSuffix(for item: Sequenced) -> String {
         return " (\(item.questionNumber)/3)"
     }
+
+    @objc func back() {
+        navigationController.popViewController(animated: true)
+    }
 }

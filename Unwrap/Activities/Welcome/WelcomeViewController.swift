@@ -30,7 +30,7 @@ class WelcomeViewController: UIViewController, Storyboarded {
         #if os(iOS) && !MARZIPAN
         SwiftEntryKit.dismiss()
         #else
-        dismiss(animated: true)
+        navigationController?.dismiss(animated: true)
         #endif
     }
 }

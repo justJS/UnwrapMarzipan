@@ -48,6 +48,17 @@ class NewsViewController: UITableViewController, Storyboarded {
         fetchArticles()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Buy Swift Books", target: coordinator, action: #selector(NewsCoordinator.buyBooks))
+        #endif
+    }
+
     /// Clears our tab badge as soon as we're shown.
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

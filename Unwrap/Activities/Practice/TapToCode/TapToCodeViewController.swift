@@ -85,6 +85,19 @@ class TapToCodeViewController: UIViewController, Storyboarded, PracticingViewCon
         updateAnswerButton()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setTitle(title!)
+        Unwrap.marzipanCoordinator?.setupLeftBarButtonItem(text: "Skip", target: self, action: #selector(skip))
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Hint", target: self, action: #selector(hint))
+        #endif
+    }
+
     @objc func hint() {
         showAlert(body: "All the code components need to be used somewhere – try rearranging them until you're happy.", on: self)
     }
@@ -127,6 +140,11 @@ class TapToCodeViewController: UIViewController, Storyboarded, PracticingViewCon
             dataSource.isShowingAnswers = true
             usedWordsCollectionView.reloadData()
             navigationItem.leftBarButtonItem?.isEnabled = false
+
+            // MARZIPAN: Setup macOS navigation bar items
+            #if MARZIPAN
+            Unwrap.marzipanCoordinator?.leftBarButtonItem?.isEnabled = false
+            #endif
 
             // Style our button correctly depending on the user's success.
             if dataSource.isUserCorrect {

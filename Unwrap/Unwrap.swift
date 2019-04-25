@@ -21,4 +21,9 @@ enum Unwrap {
         let baseFont = UIFont(name: "Menlo", size: 17) ?? UIFont.systemFont(ofSize: 17)
         return metrics.scaledFont(for: baseFont)
     }
+
+    // MARZIPAN: MarzipanCoordinator sets up menus, navigations bars, etc
+    #if MARZIPAN
+    static var marzipanCoordinator: MarzipanCoordinator?
+    #endif
 }

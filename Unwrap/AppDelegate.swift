@@ -12,7 +12,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+
+    // MARZIPAN: Tab bars are not available on macOS
+    #if os(iOS) && !MARZIPAN
     var tabBarController: MainTabBarController?
+    #endif
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window?.backgroundColor = .white
@@ -20,12 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Load the existing user if we already have one, or create a new one for the first run.
         User.current = User.load() ?? User()
 
+        // MARZIPAN: Tab bars are not available on macOS
+        #if os(iOS) && !MARZIPAN
         /// Send in the main tab bar controller, which can create our initial coordinators.
         tabBarController = MainTabBarController()
         window?.rootViewController = tabBarController
 
         /// We want the tab bar controller to handle our launch options so we can jump right too various tabs as needed.
         tabBarController?.handle(launchOptions)
+        #else
+        Unwrap.marzipanCoordinator = MarzipanCoordinator(window: window)
+
+        /// We want the Marzipan coordinator to handle our launch options so we can jump right too various tabs as needed.
+        Unwrap.marzipanCoordinator?.handle(launchOptions)
+        #endif
 
         /// If a user has requested to play a movie, always play sound
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .moviePlayback, options: [])
@@ -34,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        // MARZIPAN: Tab bars are not available on macOS
+        #if os(iOS) && !MARZIPAN
         tabBarController?.handle(shortcutItem: shortcutItem)
+        #else
+        Unwrap.marzipanCoordinator?.handle(shortcutItem: shortcutItem)
+        #endif
     }
 }

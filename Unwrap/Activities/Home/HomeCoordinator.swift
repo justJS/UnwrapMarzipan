@@ -120,6 +120,11 @@ class HomeCoordinator: Coordinator, AlertShowing {
     /// Show credits for the app.
     @objc func showCredits() {
         let credits = CreditsViewController.instantiate()
+        credits.coordinator = self
         navigationController.pushViewController(credits, animated: true)
+    }
+
+    @objc func back() {
+        navigationController.popViewController(animated: true)
     }
 }

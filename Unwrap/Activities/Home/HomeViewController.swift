@@ -28,6 +28,17 @@ class HomeViewController: UITableViewController, Storyboarded, UserTracking {
         navigationItem.rightBarButtonItem = helpButton
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Help", target: coordinator, action: #selector(HomeCoordinator.showHelp))
+        #endif
+    }
+
     /// When running on a real device for a user that has been using the app for a while, this prompts for a review.
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)

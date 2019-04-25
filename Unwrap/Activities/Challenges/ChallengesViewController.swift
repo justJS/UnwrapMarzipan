@@ -33,6 +33,12 @@ class ChallengesViewController: UITableViewController, Storyboarded, UserTrackin
 
         // reload our table each time the user returns here so that daily challenge updates correctly
         tableView.reloadData()
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        #endif
     }
 
     func userDataChanged() {
