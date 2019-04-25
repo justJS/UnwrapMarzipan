@@ -73,4 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         User.current = User.load()
         User.current.cloudUpdate()
     }
+
+    @objc func cloudDataChanged() {
+        User.current = User.load()
+        User.current.cloudUpdate()
+    }
 }
