@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -31,10 +31,10 @@ struct SpotTheErrorPractice: PracticeActivity {
     static let icon = UIImage(bundleName: "Practice-SpotTheError")
 
     init() {
-        var items = Bundle.main.decode([SpotTheErrorQuestion].self, from: "SpotTheError.json")
-        items.shuffle()
+        let items = Bundle.main.decode([SpotTheErrorQuestion].self, from: "SpotTheError.json")
+        let selectedItem = items[Unwrap.getEntropy() % items.count]
 
-        let generatedErrors = generate(from: items[0])
+        let generatedErrors = generate(from: selectedItem)
         code = generatedErrors.code.lines
         error = generatedErrors.error
         lineNumber = generatedErrors.lineNumber
@@ -69,7 +69,7 @@ struct SpotTheErrorPractice: PracticeActivity {
 
         case .badReturnType:
             // returning Int/Double/Float rather than String
-            lineNumber = lines.index(of: "    return RETURN_NAME")
+            lineNumber = lines.firstIndex(of: "    return RETURN_NAME")
 
             switch Int.random(in: 0..<3) {
             case 0:
@@ -127,7 +127,7 @@ struct SpotTheErrorPractice: PracticeActivity {
 
         case .missingReturnType:
             // deleting -> String
-            lineNumber = lines.index(of: "    return RETURN_NAME")
+            lineNumber = lines.firstIndex(of: "    return RETURN_NAME")
             output = code.replacingOccurrences(of: " -> String", with: "")
 
         case .missingReturnValue:

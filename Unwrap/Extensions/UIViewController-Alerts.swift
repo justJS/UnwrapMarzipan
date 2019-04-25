@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -21,7 +21,15 @@ extension UIViewController {
         var attributes = EKAttributes()
         attributes.displayDuration = .infinity
 
-        let widthConstraint = EKAttributes.PositionConstraints.Edge.ratio(value: 0.9)
+        let widthConstraint: EKAttributes.PositionConstraints.Edge
+
+        // If we're on phone we want the alert to take up 90% of the view width, but for everything else a fixed width is fine.
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            widthConstraint = EKAttributes.PositionConstraints.Edge.ratio(value: 0.9)
+        } else {
+            widthConstraint = EKAttributes.PositionConstraints.Edge.constant(value: 400)
+        }
+
         let heightConstraint = EKAttributes.PositionConstraints.Edge.intrinsic
         attributes.positionConstraints.size = .init(width: widthConstraint, height: heightConstraint)
         attributes.screenInteraction = .dismiss

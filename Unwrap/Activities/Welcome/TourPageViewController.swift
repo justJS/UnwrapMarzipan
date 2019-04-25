@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -33,7 +33,7 @@ class TourPageViewController: UIPageViewController, UIPageViewControllerDataSour
 
     /// Returns the previous tour item if there is one.
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = allViewControllers.index(of: viewController) else { return nil }
+        guard let currentIndex = allViewControllers.firstIndex(of: viewController) else { return nil }
 
         if currentIndex > 0 {
             return allViewControllers[currentIndex - 1]
@@ -44,7 +44,7 @@ class TourPageViewController: UIPageViewController, UIPageViewControllerDataSour
 
     /// Returns the next tour item if there is one.
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = allViewControllers.index(of: viewController) else { return nil }
+        guard let currentIndex = allViewControllers.firstIndex(of: viewController) else { return nil }
 
         if currentIndex < allViewControllers.count - 1 {
             return allViewControllers[currentIndex + 1]
@@ -58,7 +58,7 @@ class TourPageViewController: UIPageViewController, UIPageViewControllerDataSour
         guard completed else { return }
 
         guard let activeViewController = viewControllers?.last else { return }
-        guard let page = allViewControllers.index(of: activeViewController) else { return }
+        guard let page = allViewControllers.firstIndex(of: activeViewController) else { return }
 
         pageChangeDelegate?.pageChanged(to: page)
     }

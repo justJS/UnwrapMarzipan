@@ -3,13 +3,13 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
 
-/// The main view controller you see in  the Challenges tab in the app.
-class NewsViewController: UITableViewController, Storyboarded {
+/// The view controller you see in the News tab in the app.
+class NewsViewController: UITableViewController, Storyboarded, UIViewControllerPreviewingDelegate {
     var coordinator: NewsCoordinator?
 
     /// This handles all the rows in our table view, including downloading news.
@@ -17,6 +17,9 @@ class NewsViewController: UITableViewController, Storyboarded {
 
     /// This handles showing something meaningful if news download failed.
     var emptyDataSource = NewsEmptyDataSource()
+
+    /// The article that has selected by a 3D touch.
+    var currentSelectedArticle: NewsArticle!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +91,7 @@ class NewsViewController: UITableViewController, Storyboarded {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = dataSource.article(at: indexPath.row)
         coordinator?.read(article)
+        tableView.reloadData()
     }
 }
 
@@ -98,8 +102,8 @@ extension NewsViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = tableView.indexPathForRow(at: location) {
             previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
-            let article = dataSource.article(at: indexPath.row)
-            return coordinator?.readViewController(for: article)
+            currentSelectedArticle = dataSource.article(at: indexPath.row)
+            return coordinator?.readViewController(for: currentSelectedArticle)
         }
 
         return nil
@@ -107,7 +111,8 @@ extension NewsViewController: UIViewControllerPreviewingDelegate {
 
     /// Called when the user 3D touches harder on a news story.
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        coordinator?.startReading(using: viewControllerToCommit)
+        coordinator?.startReading(using: viewControllerToCommit, withURL: currentSelectedArticle.url)
+        tableView.reloadData()
     }
 }
 #endif

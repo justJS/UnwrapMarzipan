@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -67,5 +67,14 @@ extension NSAttributedString {
 
         title.append(number)
         return title
+    }
+
+    /// Adds an extra bold font attribute to the entire string. This is used to show explanation for code questions.
+    func formattedAsExplanation() -> NSAttributedString {
+        let returnValue = NSMutableAttributedString(attributedString: self)
+
+        returnValue.addAttribute(.font, value: Unwrap.scaledExtraBoldFont, range: NSRange(location: 0, length: returnValue.length))
+
+        return returnValue
     }
 }

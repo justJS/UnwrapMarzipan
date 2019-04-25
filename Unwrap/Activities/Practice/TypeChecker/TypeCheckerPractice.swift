@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -50,7 +50,7 @@ struct TypeCheckerPractice: PracticeActivity {
 
         // Add some correct answers…
         for _ in 0 ..< correctAnswers {
-            answers.append(Answer(text: types[0].function(), isCorrect: true, isSelected: false))
+            answers.append(Answer(text: types[0].function(), subtitle: "", isCorrect: true, isSelected: false))
         }
 
         // …and some wrong answers – however many we need to bring us up to eight answers.
@@ -58,7 +58,7 @@ struct TypeCheckerPractice: PracticeActivity {
             let randomType = types.randomElement()!
 
             if randomType.type != correctType {
-                answers.append(Answer(text: randomType.function(), isCorrect: false, isSelected: false))
+                answers.append(Answer(text: randomType.function(), subtitle: "This doesn't have the type you're looking for.", isCorrect: false, isSelected: false))
             }
         }
 

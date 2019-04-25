@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -156,6 +156,7 @@ class HomeDataSource: NSObject, UITableViewDataSource {
     /// Shows how the user is progressing through levels.
     func makeStatistic(in tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Stat", for: indexPath)
+        cell.textLabel?.textColor = nil
 
         switch indexPath.row {
         case 0:
@@ -203,8 +204,8 @@ class HomeDataSource: NSObject, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Stat", for: indexPath)
             cell.textLabel?.text = "Best Streak"
             cell.textLabel?.textColor = nil
-            cell.detailTextLabel?.text = "\(User.current.streakDays)"
-            cell.accessibilityLabel = "Your best streak count is \(User.current.streakDays)"
+            cell.detailTextLabel?.text = "\(User.current.bestStreak)"
+            cell.accessibilityLabel = "Your best streak count is \(User.current.bestStreak)"
             //UITest reading accessibility label and not accessibility identifier in Storyboard
             cell.accessibilityIdentifier = "Streak Reminder"
             return cell
@@ -222,8 +223,13 @@ class HomeDataSource: NSObject, UITableViewDataSource {
 
         cell.collectionView.dataSource = badgeDataSource
         cell.collectionView.delegate = badgeDataSource
+
+        /// See the comment for BadgeTableViewCell.applyLayoutWorkaround()
+        cell.layoutIfNeeded()
+
         //Storyboard doesn't override isAccessibilityElement for UITesting, setting it here
         cell.isAccessibilityElement = true
+
         return cell
     }
 }

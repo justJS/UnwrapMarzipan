@@ -6,19 +6,55 @@
     "hint": "Start a throwing block using <code>do<\/code>, mark each throwing line with <code>try<\/code> and catch errors using <code>catch<\/code>.",
     "syntaxHighlighting": false,
     "correct": [
-        "Throwing functions must be called using <code>try<\/code>",
-        "Throwing functions must be marked with <code>throws<\/code>",
-        "Swift won't let you run an error-throwing function by accident.",
-        "Use <code>do<\/code> to start a section of code that calls throwing functions.",
-        "If any errors are thrown, execution immediately jumps to the <code>catch<\/code> block.",
-        "You can mark any function as throwing."
+        {
+            "answer": "Throwing functions must be called using <code>try<\/code>",
+            "reason": "This is correct."
+        },
+        {
+            "answer": "Throwing functions must be marked with <code>throws<\/code>",
+            "reason": "This is correct."
+        },
+        {
+            "answer": "Swift won't let you run an error-throwing function by accident.",
+            "reason": "This is correct."
+        },
+        {
+            "answer": "Use <code>do<\/code> to start a section of code that calls throwing functions.",
+            "reason": "This is correct."
+        },
+        {
+            "answer": "If any errors are thrown, execution immediately jumps to the <code>catch<\/code> block.",
+            "reason": "This is correct."
+        },
+        {
+            "answer": "You can mark any function as throwing.",
+            "reason": "This is correct."
+        }
     ],
     "wrong": [
-        "Throwing functions can't return values.",
-        "You can call only one throwing function inside a <code>do<\/code> block.",
-        "Swift lets you skip adding a <code>catch<\/code> block when it's safe.",
-        "You don't need to catch all errors.",
-        "You should mark all functions as throwing.",
-        "You can define only one error enum in your apps."
+        {
+            "answer": "Throwing functions can't return values.",
+            "reason": "They can return values just like regular functions."
+        },
+        {
+            "answer": "You can call only one throwing function inside a <code>do<\/code> block.",
+            "reason": "You can call as many as you want."
+        },
+        {
+            "answer": "Swift lets you skip adding a <code>catch<\/code> block when it's safe.",
+            "reason": "If functions throw errors, you must catch those errors."
+        },
+        {
+            "answer": "You don't need to catch all errors.",
+            "reason": "If functions throw errors, you must catch those errors."
+        },
+        {
+            "answer": "You should mark all functions as throwing.",
+            "reason": "There's no need for this – only mark functions as throwing if they throw errors."
+        },
+        {
+            "answer": "You can define only one error enum in your apps.",
+            "reason": "You can define as many as you need."
+        }
     ]
 }

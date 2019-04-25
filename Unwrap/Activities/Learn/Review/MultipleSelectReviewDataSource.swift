@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -41,11 +41,11 @@ class MultipleSelectReviewDataSource: NSObject, UITableViewDataSource, UITableVi
         let wrongAnswers = 8 - correctAnswers
 
         for index in 0..<correctAnswers {
-            answers.append(Answer(text: review.correct[index], isCorrect: true, isSelected: false))
+            answers.append(Answer(text: review.correct[index].answer, subtitle: review.correct[index].reason, isCorrect: true, isSelected: false))
         }
 
         for index in 0..<wrongAnswers {
-            answers.append(Answer(text: review.wrong[index], isCorrect: false, isSelected: false))
+            answers.append(Answer(text: review.wrong[index].answer, subtitle: review.wrong[index].reason, isCorrect: false, isSelected: false))
         }
 
         answers.shuffle()
@@ -60,6 +60,7 @@ class MultipleSelectReviewDataSource: NSObject, UITableViewDataSource, UITableVi
         let answer = answers[indexPath.row]
 
         if review.syntaxHighlighting == true {
+            cell.textLabel?.font = Unwrap.codeFont
             cell.textLabel?.attributedText = answer.text.syntaxHighlighted()
         } else {
             cell.textLabel?.attributedText = answer.text.fromSimpleHTML()
@@ -68,6 +69,11 @@ class MultipleSelectReviewDataSource: NSObject, UITableViewDataSource, UITableVi
         // make sure we have a custom multiple selection background view so we can recolor when showing answers
         if cell.multipleSelectionBackgroundView == nil {
             cell.multipleSelectionBackgroundView = UIView()
+        }
+
+        // set the detail text label contents here to make sure we participate fully in Auto Layout cell sizing
+        if isShowingAnswers {
+            cell.detailTextLabel?.attributedText = answer.subtitle.fromSimpleHTML().formattedAsExplanation()
         }
 
         return cell
@@ -79,16 +85,20 @@ class MultipleSelectReviewDataSource: NSObject, UITableViewDataSource, UITableVi
 
         if isShowingAnswers {
             if cell.isSelected {
+                cell.detailTextLabel?.textColor = .white
+
                 if answer.isCorrect {
                     cell.correctAnswer()
                 } else {
                     cell.wrongAnswer()
                 }
             } else {
+                cell.detailTextLabel?.textColor = .black
+
                 if answer.isCorrect {
                     cell.wrongAnswer()
                 } else {
-                    cell.unknownAnswer()
+                    cell.correctAnswer()
                 }
             }
         }

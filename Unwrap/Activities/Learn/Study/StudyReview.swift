@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -26,10 +26,10 @@ struct StudyReview: Decodable {
     var hint: String
 
     /// An array of correct answers.
-    var correct: [String]
+    var correct: [ReasonedAnswer]
 
     /// An array of wrong answers.
-    var wrong: [String]
+    var wrong: [ReasonedAnswer]
 
     /// When set to true syntax highlight this text at runtime; when set to false, just bold <code> blocks;.
     var syntaxHighlighting: Bool

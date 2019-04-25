@@ -6,19 +6,55 @@
     "hint": "Dictionaries use opening and closing brackets to start and end, use colons to separate each key from its value, and use commas between items.",
     "syntaxHighlighting": true,
     "correct": [
-        "let scores = [\"Sophie\": 100]",
-        "let forecast = [\"Monday\": \"sunny\", \"Tuesday\": \"cloudy\"]",
-        "let heights = [\"Taylor Swift\": 1.78]",
-        "var roles = [\"captain\": \"Mal\", \"engineer\": \"Kaylee\"]",
-        "var capitals = [\"England\": \"London\", \"Scotland\": \"Edinburgh\"]",
-        "var address = [\"road\": \"Park Lane\", \"city\": \"Cardiff\"]"
+        {
+            "answer": "let scores = [\"Sophie\": 100]",
+            "reason": "This creates a dictionary strings for keys and integers for values."
+        },
+        {
+            "answer": "let forecast = [\"Monday\": \"sunny\", \"Tuesday\": \"cloudy\"]",
+            "reason": "This creates a dictionary strings for keys and strings for values."
+        },
+        {
+            "answer": "let heights = [\"Taylor Swift\": 1.78]",
+            "reason": "This creates a dictionary strings for keys and doubles for values."
+        },
+        {
+            "answer": "var roles = [\"captain\": \"Mal\", \"engineer\": \"Kaylee\"]",
+            "reason": "This creates a dictionary strings for keys and strings for values."
+        },
+        {
+            "answer": "var capitals = [\"England\": \"London\", \"Scotland\": \"Edinburgh\"]",
+            "reason": "This creates a dictionary strings for keys and strings for values."
+        },
+        {
+            "answer": "var address = [\"road\": \"Park Lane\", \"city\": \"Cardiff\"]",
+            "reason": "This creates a dictionary strings for keys and strings for values."
+        }
     ],
     "wrong": [
-        "let password = \"fr0sti3s\"",
-        "let isVisible = true",
-        "let location = (\"road\": \"Park Lane\", \"city\": \"Cardiff\")",
-        "var place = [\"road\", \"Park Lane\", \"city\", \"Cardiff\"]",
-        "var speed = 60.75",
-        "var books = [\"The Jungle Book\"]"
+        {
+            "answer": "let password = \"fr0sti3s\"",
+            "reason": "This creates a string."
+        },
+        {
+            "answer": "let isVisible = true",
+            "reason": "This creates a Boolean."
+        },
+        {
+            "answer": "let location = (\"road\": \"Park Lane\", \"city\": \"Cardiff\")",
+            "reason": "This creates a tuple."
+        },
+        {
+            "answer": "var place = [\"road\", \"Park Lane\", \"city\", \"Cardiff\"]",
+            "reason": "This creates an array."
+        },
+        {
+            "answer": "var speed = 60.75",
+            "reason": "This creates a double."
+        },
+        {
+            "answer": "var books = [\"The Jungle Book\"]",
+            "reason": "This creates an array."
+        }
     ]
 }

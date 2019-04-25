@@ -6,19 +6,55 @@
     "hint": "Exiting multiple loops is done by using <code>break<\/code> with a loop label.",
     "syntaxHighlighting": false,
     "correct": [
-        "A loop inside a loop is called a nested loop.",
-        "Using <code>break<\/code> by itself exits the current loop only.",
-        "Loop labels look like this: <code>myLoop:<\/code>",
-        "You can exit more than one loop at a time.",
-        "You can break out of a labeled loop whenever you need.",
-        "You can embed one loop inside another."
+        {
+            "answer": "A loop inside a loop is called a nested loop.",
+            "reason": "This statement is correct."
+        },
+        {
+            "answer": "Using <code>break<\/code> by itself exits the current loop only.",
+            "reason": "This statement is correct."
+        },
+        {
+            "answer": "Loop labels look like this: <code>myLoop:<\/code>",
+            "reason": "This statement is correct."
+        },
+        {
+            "answer": "You can exit more than one loop at a time.",
+            "reason": "This statement is correct."
+        },
+        {
+            "answer": "You can break out of a labeled loop whenever you need.",
+            "reason": "This statement is correct."
+        },
+        {
+            "answer": "You can embed one loop inside another.",
+            "reason": "This statement is correct."
+        }
     ],
     "wrong": [
-        "You may have only one labeled loop.",
-        "Nesting can only be used with <code>for<\/code> loops.",
-        "Loop labels look like this: <code>myLoop {<\/code>",
-        "You can exit up to two loops at a time.",
-        "You can only break out of loops inside a condition.",
-        "You can write <code>break 3<\/code> to break out of two loops."
+        {
+            "answer": "You may have only one labeled loop.",
+            "reason": "You may have as many labeled loops as you need."
+        },
+        {
+            "answer": "Nesting can only be used with <code>for<\/code> loops.",
+            "reason": "You can nest <code>while<\/code> loops too, if you want."
+        },
+        {
+            "answer": "Loop labels look like this: <code>myLoop {<\/code>",
+            "reason": "They are written as <code>loopName:<\/code> followed by your regular loop code."
+        },
+        {
+            "answer": "You can exit up to two loops at a time.",
+            "reason": "You can exit more loops than that if you need to, although it's possible your code is a little dubious at that point."
+        },
+        {
+            "answer": "You can only break out of loops inside a condition.",
+            "reason": "You can break out of loops outside of conditions just fine."
+        },
+        {
+            "answer": "You can write <code>break 3<\/code> to break out of two loops.",
+            "reason": "We use names rather than numbers for breaking out of a specific loops."
+        }
     ]
 }

@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import StoreKit
@@ -73,6 +73,33 @@ class HomeViewController: UITableViewController, Storyboarded, UserTracking {
             return CGFloat.leastNonzeroMagnitude
         } else {
             return UITableView.automaticDimension
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 4 {
+            /// See the comment for BadgeTableViewCell.applyLayoutWorkaround()
+            return 550
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 4 {
+            /// See the comment for BadgeTableViewCell.applyLayoutWorkaround()
+            return 550
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
+
+    /// See the comment for BadgeTableViewCell.applyLayoutWorkaround()
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 4 {
+            if let cell = cell as? BadgeTableViewCell {
+                cell.applyLayoutWorkaround()
+            }
         }
     }
 

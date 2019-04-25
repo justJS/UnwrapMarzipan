@@ -4,8 +4,8 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/iOS-11.3+-blue.svg" />
-    <img src="https://img.shields.io/badge/Swift-4.2-brightgreen.svg" />
+    <img src="https://img.shields.io/badge/iOS-12.0+-blue.svg" />
+    <img src="https://img.shields.io/badge/Swift-5.0-brightgreen.svg" />
     <a href="https://twitter.com/twostraws">
         <img src="https://img.shields.io/badge/Contact-@twostraws-lightgrey.svg?style=flat" alt="Twitter: @twostraws" />
     </a>
@@ -24,7 +24,7 @@ At some point hopefully soon Unwrap will be available to download for free on th
 
 ## Trying it yourself
 
-Unwrap is written using Xcode 10.1 and Swift 4.2. All the CocoaPods are checked in to this repository, so you should be able to clone this and build it immediately by opening `Unwrap.xcworkspace`.
+Unwrap is written using Xcode 10.2 and Swift 5.0. All the CocoaPods are checked in to this repository, so you should be able to clone this and build it immediately by opening `Unwrap.xcworkspace`.
 
 As far as I know the app is feature complete, but there are likely to be errors all over the place at least to begin with – if you hit problems, either building or running the app, please let me know.
 
@@ -67,9 +67,9 @@ Again, please make sure you read the LICENSE.md and CONTRIBUTING.md files before
 
 ## Credits
 
-Unwrap was designed and built by Paul Hudson. Hacking with Swift, Swift in Sixty Seconds, Unwrap, and the Unwrap logo are all copyright © Paul Hudson 2018.
+Unwrap was designed and built by Paul Hudson. Hacking with Swift, Swift in Sixty Seconds, Unwrap, and the Unwrap logo are all copyright © Paul Hudson 2019.
 
-Unwrap is built using some third-party frameworks and fonts: [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet), [Font Awesome](https://fontawesome.com/), [MKRingProgressView](https://github.com/maxkonovalov/MKRingProgressView), [QuickLayout](https://github.com/huri000/QuickLayout), [SavannaKit](https://github.com/louisdh/savannakit), [SDWebImage](https://github.com/SDWebImage/SDWebImage), [SourceEditor](https://github.com/louisdh/source-editor), and [SwiftEntryKit](https://github.com/huri000/SwiftEntryKit). Their licenses are stored inside their respective Pods directories, and are repeated inside the app’s credits screen.
+Unwrap is built using some third-party frameworks and fonts: [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet), [Font Awesome](https://fontawesome.com/), [MKRingProgressView](https://github.com/maxkonovalov/MKRingProgressView), [QuickLayout](https://github.com/huri000/QuickLayout), [SDWebImage](https://github.com/SDWebImage/SDWebImage), [Sourceful](https://github.com/twostraws/Sourceful), and [SwiftEntryKit](https://github.com/huri000/SwiftEntryKit). Their licenses are stored inside their respective Pods directories, and are repeated inside the app’s credits screen.
 
 Swift, the Swift logo, Xcode, Instruments, Cocoa Touch, Touch ID, AirDrop, iBeacon, iPhone, iPad, Safari, App Store, watchOS, tvOS, Mac and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. 
 

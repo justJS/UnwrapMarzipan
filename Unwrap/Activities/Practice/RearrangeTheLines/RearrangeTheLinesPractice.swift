@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -26,8 +26,7 @@ struct RearrangeTheLinesPractice: PracticeActivity {
 
     init() {
         let items = Bundle.main.decode([RearrangeTheLinesQuestion].self, from: "RearrangeTheLines.json")
-        let shuffledItems = items.shuffled()
-        let selectedItem = shuffledItems[0]
+        let selectedItem = items[Unwrap.getEntropy() % items.count]
 
         question = selectedItem.question
         hint = selectedItem.hint

@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -27,22 +27,6 @@ struct FreeCodingPractice: PracticeActivity {
     static let lockedUntil = "Typecasting"
     static let icon = UIImage(bundleName: "Practice-FreeCoding")
 
-    /// Loads a single FreeCodingQuestion into an activity. If testMode is true then it always chooses the first question so we can run a fixed test against it.
-    init(testMode: Bool = false) {
-        var items = Bundle.main.decode([FreeCodingQuestion].self, from: "FreeCoding.json")
-
-        if testMode == false {
-            items.shuffle()
-        }
-
-        let selectedItem = items[0]
-
-        question = selectedItem.question
-        hint = selectedItem.hint
-        startingCode = selectedItem.startingCode
-        answers = selectedItem.answers
-    }
-
     /// Creates a view controller configured with a Free Coding activity.
     static func instantiate() -> UIViewController & PracticingViewController {
         let viewController = FreeCodingViewController.instantiate()
@@ -56,8 +40,13 @@ struct FreeCodingPractice: PracticeActivity {
         let cleanedAnswer = answer.replacingOccurrences(of: startingCode, with: "")
 
         // Homogenize the code they wrote.
-        let answer = cleanedAnswer.toAnonymizedVariables()
+        let answer = cleanedAnswer.toAnonymizedVariables().trimmingCharacters(in: .whitespacesAndNewlines)
         let range = NSRange(location: 0, length: answer.utf16.count)
+
+        guard !answer.isEmpty else {
+            // They didn't provide any input, so bail out immediately
+            return (false, [])
+        }
 
         // Loop over all the answers we have, attempting to find one that matches their input.
         for possibleAnswer in answers {
@@ -108,6 +97,7 @@ struct FreeCodingPractice: PracticeActivity {
         expr = expr.replacingOccurrences(of: ">", with: "\\>")
         expr = expr.replacingOccurrences(of: "^", with: "\\^")
         expr = expr.replacingOccurrences(of: "$", with: "\\$")
+        expr = expr.replacingOccurrences(of: ".", with: "\\.")
 
         // Now we need to transform the string so that it accepts a variety of different coding approaches.
 
@@ -144,5 +134,19 @@ struct FreeCodingPractice: PracticeActivity {
         } catch {
             fatalError("Invalid regular expression \"\(expr)\"; original input string was \"\(string)\". \(error.localizedDescription)")
         }
+    }
+}
+
+extension FreeCodingPractice {
+    /// Loads a single FreeCodingQuestion into an activity. This is kept separate so we retain the memberwise initializer for testing purposes.
+    init() {
+        var items = Bundle.main.decode([FreeCodingQuestion].self, from: "FreeCoding.json")
+        let selectedItem: FreeCodingQuestion
+        selectedItem = items[Unwrap.getEntropy() % items.count]
+
+        question = selectedItem.question
+        hint = selectedItem.hint
+        startingCode = selectedItem.startingCode
+        answers = selectedItem.answers
     }
 }

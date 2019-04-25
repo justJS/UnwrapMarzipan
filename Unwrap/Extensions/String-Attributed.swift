@@ -3,11 +3,10 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
-import SavannaKit
-import SourceEditor
+import Sourceful
 import UIKit
 
 extension String {
@@ -15,16 +14,8 @@ extension String {
     func bold(usingRegex regexString: String) -> NSAttributedString {
         assert(regexString.isEmpty == false, "Empty regular expression strings are not allowed.")
 
-        // Take a base font in regular and bold, then scale it up for Dynamic Type.
-        let baseFont = UIFont.systemFont(ofSize: 17)
-        let boldFont = UIFont.boldSystemFont(ofSize: 17)
-
-        let metrics = UIFontMetrics(forTextStyle: .body)
-        let scaledBaseFont = metrics.scaledFont(for: baseFont)
-        let scaledBoldFont = metrics.scaledFont(for: boldFont)
-
-        let baseAttributes = [NSAttributedString.Key.font: scaledBaseFont]
-        let boldAttributes = [NSAttributedString.Key.font: scaledBoldFont]
+        let baseAttributes = [NSAttributedString.Key.font: Unwrap.scaledBaseFont]
+        let boldAttributes = [NSAttributedString.Key.font: Unwrap.scaledBoldFont]
 
         /// Start with an attributed string of our base text with the base attributes.
         let result = NSMutableAttributedString(string: self, attributes: baseAttributes)

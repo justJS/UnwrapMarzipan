@@ -3,10 +3,10 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
-import SourceEditor
+import Sourceful
 import UIKit
 
 final class User: Codable {
@@ -23,7 +23,7 @@ final class User: Codable {
 
         case scoreShareCount
         case latestNewsArticle
-        case readNewsCount
+        case articlesRead
 
         case theme
     }
@@ -57,10 +57,15 @@ final class User: Codable {
     var latestNewsArticle = 0
 
     /// The number of times the user has read a news article.
-    var readNewsCount = 0
+    var readNewsCount: Int {
+        return articlesRead.count
+    }
 
     /// Tracks the currently enabled theme.
     var theme = "Light"
+
+    /// Tracks which articles the user has read.
+    var articlesRead = Set<URL>()
 
     // MARK: Computed properties
 
@@ -86,7 +91,7 @@ final class User: Codable {
 
     /// The users current rank number.
     var rankNumber: Int {
-        let rank = User.rankLevels.index { $0 > totalPoints }
+        let rank = User.rankLevels.firstIndex { $0 > totalPoints }
         return (rank ?? 1)
     }
 
@@ -166,13 +171,18 @@ final class User: Codable {
 
         scoreShareCount = try container.decode(Int.self, forKey: .scoreShareCount)
         latestNewsArticle = try container.decode(Int.self, forKey: .latestNewsArticle)
-        readNewsCount = try container.decode(Int.self, forKey: .readNewsCount)
+        articlesRead = try container.decode(Set<URL>.self, forKey: .articlesRead)
 
         theme = try container.decode(String.self, forKey: .theme)
 
         NotificationCenter.default.addObserver(self, selector: #selector(updateStreak), name: .NSCalendarDayChanged, object: nil)
 
         updateStreak()
+    }
+
+    /// Triggered by new data coming from iCloud; pass it straight on to statusChanged() so all our UI refreshes.
+    func cloudUpdate() {
+        cloudStatusChanged()
     }
 
     /// Triggered when the user has finished learning
@@ -210,10 +220,15 @@ final class User: Codable {
         statusChanged()
     }
 
-    /// Triggered when the user reads any news story
-    func readNewsStory() {
-        readNewsCount += 1
+    /// Triggered when the user reads any news story.
+    func readNewsStory(forURL url: URL) {
+        articlesRead.insert(url)
         statusChanged()
+    }
+
+    /// Triggered when checking if the user read a news story.
+    func hasReadNewsStory(forURL url: URL) -> Bool {
+        return articlesRead.contains(url)
     }
 
     /// Sends an app-wide notification that the user's data has changed somehow, so all listening objects can update.
@@ -223,10 +238,19 @@ final class User: Codable {
         // Prepare to tell all listeners that the user's status has changed. We don't do this immediately to avoid reading and writing at the same time. Coalescing on name means we can call this multiple times in the same run loop without posting multiple notifications.
         NotificationQueue.default.enqueue(notification, postingStyle: .asap, coalesceMask: .onName, forModes: [.common])
 
-        // write the change out to disk at the next available chance; again, we don't want to do this immediately to avoid reading and writing at the same time
+        // Write the change out to disk at the next available chance; again, we don't want to do this immediately to avoid reading and writing at the same time.
         DispatchQueue.main.async {
             User.current.save()
         }
+    }
+
+    /// Sends an app-wide notification when the user's data has changed via the cloud, so all listening objects can update. This is the same as statusChanged but without the save.
+    private func cloudStatusChanged() {
+        let notification = Notification(name: .userStatusChanged)
+
+        // Prepare to tell all listeners that the user's status has changed. We don't do this immediately to avoid reading and writing at the same time. Coalescing on name means we can call this multiple times in the same run loop without posting multiple notifications.
+        NotificationQueue.default.enqueue(notification, postingStyle: .asap, coalesceMask: .onName, forModes: [.common])
+
     }
 
     /// Returns how many points the user has earned for a specific chapter in the book.
@@ -277,7 +301,7 @@ final class User: Codable {
             }
 
             return conditionChapter.bundleNameSections.reduce(true) {
-                return $0 && hasReviewed($1.bundleName)
+                $0 && hasReviewed($1.bundleName)
             }
         } else if badge.criterion == "practice" {
             let practiceBadgeCount = 10
@@ -309,17 +333,33 @@ final class User: Codable {
     /// Called whenever we need to update our streak. This checks whether the streak should be updated, then either carries it out or resets the streak if more than 1 day has passed.
     @objc func updateStreak() {
         let today = Date()
+        let elapsedDays: Int
         guard lastStreakEntry.isSameDay(as: today) == false else { return }
-
-        let elapsedDays = lastStreakEntry.days(between: today)
-
-        if elapsedDays == 1 {
-            lastStreakEntry = today
-            streakDays += 1
-            bestStreak = max(bestStreak, streakDays)
-        } else {
-            // reset back to 1, because they obviously launched the app today
-            streakDays = 1
+        // We want to see if today is more recent than sync'd lastStreakEntry. This will be true if we are first in app during or after a calendar day change. Otherwise, our lastStreakEntry is newer and we need to calculate elapsed days the other way.
+        if today > lastStreakEntry {
+            elapsedDays = lastStreakEntry.days(between: today)
+            if elapsedDays == 1 {
+                lastStreakEntry = today
+                streakDays += 1
+                bestStreak = max(bestStreak, streakDays)
+            } else {
+                // reset back to 1, because they obviously launched the app today
+                streakDays = 1
+                lastStreakEntry = today
+            }
+        } else if today < lastStreakEntry {
+            elapsedDays = today.days(between: lastStreakEntry)
+            if elapsedDays == 1 {
+                lastStreakEntry = today
+                // Not going to update streakDays here as the version from iCloud already has the correct value
+                bestStreak = max(bestStreak, streakDays)
+            } else {
+                // reset back to 1, because they obviously launched the app today
+                streakDays = 1
+                lastStreakEntry = today
+            }
         }
+        save()
     }
+
 }

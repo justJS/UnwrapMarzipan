@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -56,7 +56,7 @@ class ChallengesDataSource: NSObject, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousChallenge", for: indexPath)
 
-            if User.current.dailyChallenges.count == 0 {
+            if User.current.dailyChallenges.isEmpty {
                 cell.textLabel?.text = "No completed challenges yet"
                 cell.detailTextLabel?.text = nil
                 cell.selectionStyle = .none

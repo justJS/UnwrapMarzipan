@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import AVKit
@@ -21,11 +21,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window?.backgroundColor = .white
 
+        // Instantiate UserDefaults keys to be monitored
+        let defaults = UserDefaults()
+        defaults.register(defaults: ["User": NSData(), "Test User": NSData()])
+
+        // Uncomment the following line to see Zephyr debug info in the console
+        // Zephyr.debugEnabled = true
+
+        // We're going to tell Zephyr which keys to monitor.
+        Zephyr.addKeysToBeMonitored(keys: ["User", "Test User"])
+
+        Zephyr.sync(keys: ["User", "Test User"])
+
         // Load the existing user if we already have one, or create a new one for the first run.
         User.current = User.load() ?? User()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(cloudDataChanged), name: Zephyr.keysDidChangeOnCloudNotification, object: nil)
+
         // MARZIPAN: Tab bars are not available on macOS
         #if os(iOS) && !MARZIPAN
+        
         /// Send in the main tab bar controller, which can create our initial coordinators.
         tabBarController = MainTabBarController()
         window?.rootViewController = tabBarController
@@ -52,5 +67,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         Unwrap.marzipanCoordinator?.handle(shortcutItem: shortcutItem)
         #endif
+    }
+
+    @objc func cloudDataChanged() {
+        User.current = User.load()
+        User.current.cloudUpdate()
     }
 }

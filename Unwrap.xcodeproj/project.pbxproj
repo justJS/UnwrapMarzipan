@@ -10,6 +10,7 @@
 		4C41E3132207C678009D580E /* ReviewPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E3122207C678009D580E /* ReviewPractice.swift */; };
 		4C7232A0221C186400D169E9 /* ReviewMultipleSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72329F221C186400D169E9 /* ReviewMultipleSelectViewController.swift */; };
 		4C7232A2221C223600D169E9 /* ReviewSingleSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7232A1221C223600D169E9 /* ReviewSingleSelectViewController.swift */; };
+		4C8950C42253633F002F9FA6 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8950C32253633F002F9FA6 /* NewsTableViewCell.swift */; };
 		4DF330FA7B825B71886020E9 /* Pods_UnwrapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFD8A2C064B3B2E474D67A1 /* Pods_UnwrapTests.framework */; };
 		510539F8211300D400B28328 /* UIImage-Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510539F7211300D400B28328 /* UIImage-Sharing.swift */; };
 		510539FA211307E800B28328 /* CoordinatedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510539F9211307E800B28328 /* CoordinatedNavigationController.swift */; };
@@ -168,7 +169,9 @@
 		51D8FE7120ED3879004DFF83 /* TapToCodeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8FE7020ED3879004DFF83 /* TapToCodeQuestion.swift */; };
 		51D8FE7320ED3BF6004DFF83 /* TapToCodePractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8FE7220ED3BF6004DFF83 /* TapToCodePractice.swift */; };
 		51D8FE7520EE040F004DFF83 /* TapToCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 51D8FE7420EE040F004DFF83 /* TapToCode.json */; };
+		51DB1D79222D9648005CB620 /* WrongAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB1D78222D9648005CB620 /* WrongAnswer.swift */; };
 		51DDE52221107B170056020E /* PredictTheOutputAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DDE52121107B170056020E /* PredictTheOutputAnswer.swift */; };
+		51E35647223CE43400C05881 /* Float-Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E35646223CE43400C05881 /* Float-Random.swift */; };
 		51EFBEF3210CFED100211A8D /* String-Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFBEF2210CFED100211A8D /* String-Attributed.swift */; };
 		51EFBEF5210D010300211A8D /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFBEF4210D010300211A8D /* CreditsViewController.swift */; };
 		51EFBEF8210D067A00211A8D /* Credits.md in Resources */ = {isa = PBXBuildFile; fileRef = 51EFBEF7210D067A00211A8D /* Credits.md */; };
@@ -656,6 +659,7 @@
 		B9829655223A6DFF004EB968 /* Badge-Veteran-Challenger.png in Resources */ = {isa = PBXBuildFile; fileRef = B9829611223A6DFE004EB968 /* Badge-Veteran-Challenger.png */; };
 		B9829657223A809B004EB968 /* MarzipanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9829656223A809B004EB968 /* MarzipanCoordinator.swift */; };
 		FBCAB466480A05C9E3D694CF /* Pods_Unwrap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1042D2A80E9E96DA0B7C6F35 /* Pods_Unwrap.framework */; };
+		FEBC8E7F2267573B00A33F05 /* Zephyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBC8E7E2267573B00A33F05 /* Zephyr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -682,6 +686,7 @@
 		4C41E3122207C678009D580E /* ReviewPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPractice.swift; sourceTree = "<group>"; };
 		4C72329F221C186400D169E9 /* ReviewMultipleSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewMultipleSelectViewController.swift; sourceTree = "<group>"; };
 		4C7232A1221C223600D169E9 /* ReviewSingleSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSingleSelectViewController.swift; sourceTree = "<group>"; };
+		4C8950C32253633F002F9FA6 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		4DFD8A2C064B3B2E474D67A1 /* Pods_UnwrapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnwrapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		510539F7211300D400B28328 /* UIImage-Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Sharing.swift"; sourceTree = "<group>"; };
 		510539F9211307E800B28328 /* CoordinatedNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatedNavigationController.swift; sourceTree = "<group>"; };
@@ -852,7 +857,9 @@
 		51D8FE7020ED3879004DFF83 /* TapToCodeQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToCodeQuestion.swift; sourceTree = "<group>"; };
 		51D8FE7220ED3BF6004DFF83 /* TapToCodePractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToCodePractice.swift; sourceTree = "<group>"; };
 		51D8FE7420EE040F004DFF83 /* TapToCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TapToCode.json; sourceTree = "<group>"; };
+		51DB1D78222D9648005CB620 /* WrongAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrongAnswer.swift; sourceTree = "<group>"; };
 		51DDE52121107B170056020E /* PredictTheOutputAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTheOutputAnswer.swift; sourceTree = "<group>"; };
+		51E35646223CE43400C05881 /* Float-Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float-Random.swift"; sourceTree = "<group>"; };
 		51EFBEF2210CFED100211A8D /* String-Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Attributed.swift"; sourceTree = "<group>"; };
 		51EFBEF4210D010300211A8D /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		51EFBEF7210D067A00211A8D /* Credits.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Credits.md; sourceTree = "<group>"; };
@@ -1343,6 +1350,7 @@
 		BE61552411B754C7764869FE /* Pods-UnwrapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapUITests/Pods-UnwrapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE64715D944F01A45D8EE2EB /* Pods-UnwrapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapUITests/Pods-UnwrapUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DD9A9FDC401B2E4E93A13259 /* Pods_UnwrapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnwrapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEBC8E7E2267573B00A33F05 /* Zephyr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zephyr.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1405,11 +1413,12 @@
 		511FD6A72105CDA20023E92C /* News */ = {
 			isa = PBXGroup;
 			children = (
+				511FD6AE2105EF220023E92C /* NewsArticle.swift */,
 				511FD6AC2105E72C0023E92C /* NewsCoordinator.swift */,
 				511FD6A82105E6B00023E92C /* NewsViewController.swift */,
 				511FD6AA2105E6EB0023E92C /* NewsDataSource.swift */,
 				51FA55D8211B55DE00C38188 /* NewsEmptyDataSource.swift */,
-				511FD6AE2105EF220023E92C /* NewsArticle.swift */,
+				4C8950C32253633F002F9FA6 /* NewsTableViewCell.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -1511,6 +1520,7 @@
 		51862E5820CE11B40086CD1B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				FEBC8E7E2267573B00A33F05 /* Zephyr.swift */,
 				51862E5920CE12330086CD1B /* User.swift */,
 				51B87CD6210B270800FE773A /* User-Serialization.swift */,
 				51B87CDD210B35C600FE773A /* User-StaticProperties.swift */,
@@ -1672,8 +1682,8 @@
 				4C41E3112207C651009D580E /* Review */,
 				51A6D63420E6539200FB6B46 /* FreeCoding */,
 				51A6D63720E6539800FB6B46 /* PredictTheOutput */,
-				51A6D63A20E6539D00FB6B46 /* RearrangeTheLines */,
 				51A6D63D20E653A300FB6B46 /* SpotTheError */,
+				51A6D63A20E6539D00FB6B46 /* RearrangeTheLines */,
 				51D8FE6F20ED3856004DFF83 /* TapToCode */,
 				51A6D61920E6511100FB6B46 /* TypeChecker */,
 				5153F49520EF762B009E829D /* PracticeCoordinator.swift */,
@@ -1804,6 +1814,7 @@
 				5153F49920EF8581009E829D /* UITableViewCell-Styling.swift */,
 				5153F4AD20F007EF009E829D /* UIViewController-Alerts.swift */,
 				511FD6B02105F07A0023E92C /* URL-String.swift */,
+				51E35646223CE43400C05881 /* Float-Random.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1847,6 +1858,7 @@
 				5156459020E1163500CED877 /* StudyViewController.swift */,
 				51FE120C20E2532100F29889 /* StudyTextView.swift */,
 				51FE151D20E2814E00F29889 /* StudyReview.swift */,
+				51DB1D78222D9648005CB620 /* WrongAnswer.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -2432,21 +2444,24 @@
 				TargetAttributes = {
 					51CC135E2065607C00F37A67 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
 								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
 							};
 						};
 					};
 					51CC13722065607F00F37A67 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						TestTargetID = 51CC135E2065607C00F37A67;
 					};
 					51CC137D2065607F00F37A67 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						TestTargetID = 51CC135E2065607C00F37A67;
 					};
 				};
@@ -3001,17 +3016,17 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Unwrap/Pods-Unwrap-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/MKRingProgressView/MKRingProgressView.framework",
+				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SavannaKit/SavannaKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SourceEditor/SourceEditor.framework",
+				"${BUILT_PRODUCTS_DIR}/Sourceful/Sourceful.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKRingProgressView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SavannaKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SourceEditor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sourceful.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3178,6 +3193,7 @@
 				51A6D62520E651DA00FB6B46 /* BoolNames.swift in Sources */,
 				51596DFD20EE995F00952ADC /* CountingLabel.swift in Sources */,
 				51ADAEA520CE9004000D9DCF /* ChallengeResult.swift in Sources */,
+				FEBC8E7F2267573B00A33F05 /* Zephyr.swift in Sources */,
 				51CC1395206568DE00F37A67 /* UIBezierPath-Logo.swift in Sources */,
 				51596DFF20EEBA1700952ADC /* AwardType.swift in Sources */,
 				5156459120E1163500CED877 /* StudyViewController.swift in Sources */,
@@ -3209,6 +3225,7 @@
 				B98293AD223A0A9E004EB968 /* MarzipanHacks.swift in Sources */,
 				5144932E20E55FF400D15AA5 /* SingleSelectReviewViewController.swift in Sources */,
 				51CC13632065607C00F37A67 /* AppDelegate.swift in Sources */,
+				51E35647223CE43400C05881 /* Float-Random.swift in Sources */,
 				51CC139D2065AB8500F37A67 /* GradientView.swift in Sources */,
 				511FD6AD2105E72C0023E92C /* NewsCoordinator.swift in Sources */,
 				5153F49E20EF93CF009E829D /* TypeCheckerViewController.swift in Sources */,
@@ -3220,8 +3237,10 @@
 				51862E5E20CE2C300086CD1B /* Formatted.swift in Sources */,
 				5189D9D720EA4AAC00E6E1D3 /* UIButton-Types.swift in Sources */,
 				51A447632107EF18005D8665 /* BadgeTableViewCell.swift in Sources */,
+				51DB1D79222D9648005CB620 /* WrongAnswer.swift in Sources */,
 				51A6D62720E651DA00FB6B46 /* FloatNames.swift in Sources */,
 				51A6D66820E6953100FB6B46 /* CodeErrorType.swift in Sources */,
+				4C8950C42253633F002F9FA6 /* NewsTableViewCell.swift in Sources */,
 				51B87CDE210B35C600FE773A /* User-StaticProperties.swift in Sources */,
 				511FD6B12105F07A0023E92C /* URL-String.swift in Sources */,
 				511FD6B821065D690023E92C /* HelpDataSource.swift in Sources */,
@@ -3374,7 +3393,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3428,7 +3447,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -3438,6 +3457,7 @@
 			baseConfigurationReference = BB24D72F99ED46CE1F202A82 /* Pods-Unwrap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Unwrap/Unwrap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = Unwrap/Info.plist;
@@ -3448,6 +3468,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.unwrapswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Marzipan/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3457,6 +3478,7 @@
 			baseConfigurationReference = 879EE4E91437B6378BB24AE1 /* Pods-Unwrap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Unwrap/Unwrap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = Unwrap/Info.plist;
@@ -3467,6 +3489,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.unwrapswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Marzipan/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3487,6 +3510,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.UnwrapTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Unwrap.app/Unwrap";
 			};
@@ -3508,6 +3532,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.UnwrapTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Unwrap.app/Unwrap";
 			};
@@ -3528,6 +3553,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.UnwrapUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Unwrap;
 			};
@@ -3548,6 +3574,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.UnwrapUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Unwrap;
 			};
@@ -3610,7 +3637,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Marzipan;
 		};

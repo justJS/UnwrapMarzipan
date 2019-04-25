@@ -3,10 +3,9 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
-import SavannaKit
-import SourceEditor
+import Sourceful
 import UIKit
 
 /// The view controller that handles Free Coding practice activities.
@@ -115,14 +114,7 @@ class FreeCodingViewController: UIViewController, Storyboarded, PracticingViewCo
 
     /// Give users the choice of trying again or skipping
     func skipOrRetry() {
-        let ac = UIAlertController(title: "That's not quite right!", message: "Check your code carefully, and try going for the simplest solution that works.", preferredStyle: .alert)
-
-        ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] action in
-            self?.answerButton.backgroundColor = UIColor(bundleName: "Primary")
-            self?.answerButton.setImage(nil, for: .normal)
-        })
-
-        present(ac, animated: true)
+        showAlert(title: "That's not quite right!", body: "Check your code carefully, and try going for the simplest solution that works.", coordinator: nil, alternateTitle: nil, alternateAction: nil)
     }
 
     /// Allows users to dismiss the keyboard when they are ready, so they can tap submit

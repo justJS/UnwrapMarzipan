@@ -3,7 +3,7 @@
 //  Unwrap
 //
 //  Created by Paul Hudson on 09/08/2018.
-//  Copyright © 2018 Hacking with Swift.
+//  Copyright © 2019 Hacking with Swift.
 //
 
 import UIKit
@@ -32,7 +32,7 @@ class TapToCodeDataSource: NSObject, UICollectionViewDataSource, UICollectionVie
 
     /// Stores whether the user is able to check their answer – becomes true when all code components have been used.
     var readyToCheck: Bool {
-        return model.allWords.count == 0
+        return model.allWords.isEmpty
     }
 
     /// Returns whether the user has used all the code correctly or not.
