@@ -8,6 +8,7 @@
 
 import AVKit
 import UIKit
+import Zephyr
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -67,6 +68,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         Unwrap.marzipanCoordinator?.handle(shortcutItem: shortcutItem)
         #endif
+    }
+
+    @objc func cloudDataChanged() {
+        User.current = User.load()
+        User.current.cloudUpdate()
     }
 
     @objc func cloudDataChanged() {
