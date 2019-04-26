@@ -78,6 +78,14 @@ class SingleSelectReviewViewController: ReviewViewController, Storyboarded {
         Unwrap.marzipanCoordinator?.leftBarButtonItem?.isEnabled = false
         #endif
 
+        // disable the other button
+        if selected == trueButton {
+            falseButton.disable()
+        } else {
+            trueButton.disable()
+        }
+
+        // update the button they tapped to reflect whether they were right or wrong
         if selected == trueButton {
             if currentAnswer.isCorrect {
                 selected.correctAnswer()

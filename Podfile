@@ -15,6 +15,7 @@ target 'Unwrap' do
   pod 'Sourceful', :git => 'https://github.com/twostraws/Sourceful.git', :branch => 'master'
   pod 'DZNEmptyDataSet', '~> 1.8'
   pod 'SwiftLint', '0.31.0'
+  pod 'Zephyr', '3.4.0'
 
   # INCLUDE DEPENDENCIES OF OTHER FRAMEWORKS TO ALLOW US TO DISABLE ON MARZIPAN
   pod 'QuickLayout', :configurations => ['Debug', 'Release'] # SwiftEntryKit
