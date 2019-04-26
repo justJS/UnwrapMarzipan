@@ -22,7 +22,7 @@ enum Unwrap {
         entropy += 1
         return entropy
     }
-    
+
     // MARZIPAN: MarzipanCoordinator sets up menus, navigations bars, etc
     #if MARZIPAN
     static var marzipanCoordinator: MarzipanCoordinator?

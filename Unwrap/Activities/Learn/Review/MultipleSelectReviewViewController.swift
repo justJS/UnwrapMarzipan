@@ -48,6 +48,20 @@ class MultipleSelectReviewViewController: ReviewViewController, Storyboarded {
         tableView.flashScrollIndicators()
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableView.reloadData()
+
+        // Set the theme on Marzipan
+        #if MARZIPAN
+        if UIScreen.main.traitCollection.userInterfaceStyle == .dark {
+            tableView.backgroundColor = .darkGray
+        } else {
+            tableView.backgroundColor = .white
+        }
+        #endif
+    }
+
     @IBAction func checkAnswer(_ sender: Any) {
         if dataSource.isShowingAnswers {
             coordinator?.answerSubmitted(from: self, wasCorrect: dataSource.isUserCorrect)

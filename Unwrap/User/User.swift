@@ -24,8 +24,6 @@ final class User: Codable {
         case scoreShareCount
         case latestNewsArticle
         case articlesRead
-
-        case theme
     }
 
     // MARK: Stored properties
@@ -62,7 +60,11 @@ final class User: Codable {
     }
 
     /// Tracks the currently enabled theme.
+    #if MARZIPAN
+    var theme: String { return UIScreen.main.traitCollection.userInterfaceStyle == .dark ? "Dark" : "Light" }
+    #else
     var theme = "Light"
+    #endif
 
     /// Tracks which articles the user has read.
     var articlesRead = Set<URL>()
@@ -173,7 +175,9 @@ final class User: Codable {
         latestNewsArticle = try container.decode(Int.self, forKey: .latestNewsArticle)
         articlesRead = try container.decode(Set<URL>.self, forKey: .articlesRead)
 
+        #if os(iOS) && !MARZIPAN
         theme = try container.decode(String.self, forKey: .theme)
+        #endif
 
         NotificationCenter.default.addObserver(self, selector: #selector(updateStreak), name: .NSCalendarDayChanged, object: nil)
 

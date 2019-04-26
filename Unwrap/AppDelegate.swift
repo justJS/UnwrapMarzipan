@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARZIPAN: Tab bars are not available on macOS
         #if os(iOS) && !MARZIPAN
-        
+
         /// Send in the main tab bar controller, which can create our initial coordinators.
         tabBarController = MainTabBarController()
         window?.rootViewController = tabBarController
@@ -68,16 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         Unwrap.marzipanCoordinator?.handle(shortcutItem: shortcutItem)
         #endif
-    }
-
-    @objc func cloudDataChanged() {
-        User.current = User.load()
-        User.current.cloudUpdate()
-    }
-
-    @objc func cloudDataChanged() {
-        User.current = User.load()
-        User.current.cloudUpdate()
     }
 
     @objc func cloudDataChanged() {

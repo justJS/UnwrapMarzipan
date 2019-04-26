@@ -1,0 +1,51 @@
+PODS:
+  - DZNEmptyDataSet (1.8.1)
+  - MKRingProgressView (2.2.2)
+  - QuickLayout (3.0.0)
+  - SDWebImage (5.0.1):
+    - SDWebImage/Core (= 5.0.1)
+  - SDWebImage/Core (5.0.1)
+  - Sourceful (0.2.0)
+  - SwiftLint (0.31.0)
+  - Zephyr (3.4.0)
+
+DEPENDENCIES:
+  - DZNEmptyDataSet (~> 1.8)
+  - MKRingProgressView (~> 2.2.2)
+  - QuickLayout
+  - SDWebImage (~> 5.0)
+  - Sourceful (from `https://github.com/twostraws/Sourceful.git`, branch `master`)
+  - SwiftLint (= 0.31.0)
+  - Zephyr (= 3.4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DZNEmptyDataSet
+    - MKRingProgressView
+    - QuickLayout
+    - SDWebImage
+    - SwiftLint
+    - Zephyr
+
+EXTERNAL SOURCES:
+  Sourceful:
+    :branch: master
+    :git: https://github.com/twostraws/Sourceful.git
+
+CHECKOUT OPTIONS:
+  Sourceful:
+    :commit: d4cb8a48042829bad9b75cb84a99fe683e8ab936
+    :git: https://github.com/twostraws/Sourceful.git
+
+SPEC CHECKSUMS:
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  MKRingProgressView: b558eff66a648bd77b11f61cfc5603ae96008077
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  SDWebImage: 27dd2c9ea07a2252f94557c9fbb6105ee94b74c9
+  Sourceful: 7be20b8682d4919a1be65369385e1e52f5be38bd
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  Zephyr: 981f34b10e37f60f00f1ec74fb8420aaadccd774
+
+PODFILE CHECKSUM: 30c7549640529291ef9c5760e14c15221d91a9ea
+
+COCOAPODS: 1.6.0

@@ -38,6 +38,8 @@ class MarzipanCoordinator: NSObject {
         super.init()
 
         setupSegmentedControl()
+        setupGlobalMenuItems()
+
         refreshNavigationBar()
     }
 
@@ -118,22 +120,19 @@ class MarzipanCoordinator: NSObject {
         refreshNavigationBar()
     }
 
+    // MARK: Segmented Control
+
     func setupSegmentedControl() {
         segmentedControl = _UIWindowToolbarSegmentedControlItem(identifier: "segmentedControl")
         segmentedControl.target = self
         segmentedControl.action = #selector(segmentedControlDidChange)
         segmentedControl.segmentTitles = ["Home", "Learn", "Practice", "Challenges", "News"]
-        /* Or, use images
-         item.segmentImageNames = @[@"TabOneIcon", @"TabTwoIcon"];
-         */
     }
 
     @objc func segmentedControlDidChange() {
         let index = segmentedControl.selectedSegment
 
         switch index {
-        case 0:
-            currentViewController = home.navigationController
         case 1:
             currentViewController = learn.navigationController
         case 2:
@@ -145,6 +144,54 @@ class MarzipanCoordinator: NSObject {
         default:
             currentViewController = home.navigationController
         }
+    }
+
+    // MARK: Menu
+
+    func setupGlobalMenuItems() {
+        let separator = _UIMenuBarItem.separatorItem() as! _UIMenuBarItem
+
+        let homeItem = _UIMenuBarItem(title: "Home", action: #selector(mainMenuBarItemClicked), keyEquivalent: "1")
+        homeItem?.target = self
+
+        let learnItem = _UIMenuBarItem(title: "Learn", action: #selector(learnMenuBarItemClicked), keyEquivalent: "2")
+        learnItem?.target = self
+
+        let practiceItem = _UIMenuBarItem(title: "Practice", action: #selector(practiceMenuBarItemClicked), keyEquivalent: "3")
+        practiceItem?.target = self
+
+        let challengesItem = _UIMenuBarItem(title: "Challenges", action: #selector(challengesMenuBarItemClicked), keyEquivalent: "4")
+        challengesItem?.target = self
+
+        let newsItem = _UIMenuBarItem(title: "News", action: #selector(newsMenuBarItemClicked), keyEquivalent: "5")
+        newsItem?.target = self
+
+        (_UIMenuBarMenu.mainMenu() as? _UIMenuBarMenu)?.insertItems([homeItem, learnItem, practiceItem, challengesItem, newsItem, separator], atBeginningOfMenu: _UIMenuBarStandardMenuIdentifierWindow)
+    }
+
+    @objc func mainMenuBarItemClicked() {
+        segmentedControl.setSelected(true, forSegment: 0)
+        currentViewController = home.navigationController
+    }
+
+    @objc func learnMenuBarItemClicked() {
+        segmentedControl.setSelected(true, forSegment: 1)
+        currentViewController = learn.navigationController
+    }
+
+    @objc func practiceMenuBarItemClicked() {
+        segmentedControl.setSelected(true, forSegment: 2)
+        currentViewController = practice.navigationController
+    }
+
+    @objc func challengesMenuBarItemClicked() {
+        segmentedControl.setSelected(true, forSegment: 3)
+        currentViewController = challenges.navigationController
+    }
+
+    @objc func newsMenuBarItemClicked() {
+        segmentedControl.setSelected(true, forSegment: 4)
+        currentViewController = news.navigationController
     }
 
     // MARK: AppDelegate

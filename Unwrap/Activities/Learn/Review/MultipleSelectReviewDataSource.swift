@@ -66,6 +66,15 @@ class MultipleSelectReviewDataSource: NSObject, UITableViewDataSource, UITableVi
             cell.textLabel?.attributedText = answer.text.fromSimpleHTML()
         }
 
+        // Set the theme on Marzipan
+        #if MARZIPAN
+        if UIScreen.main.traitCollection.userInterfaceStyle == .dark {
+            cell.backgroundColor = .darkGray
+        } else {
+            cell.backgroundColor = .white
+        }
+        #endif
+
         // make sure we have a custom multiple selection background view so we can recolor when showing answers
         if cell.multipleSelectionBackgroundView == nil {
             cell.multipleSelectionBackgroundView = UIView()

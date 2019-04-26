@@ -90,7 +90,7 @@ extension String {
 
         styleContents = styleContents.replacingOccurrences(of: "[IMAGEWIDTH]", with: "\(UIScreen.main.bounds.width)px")
         #else
-        styleContents = styleContents.replacingOccurrences(of: "[FONTSIZE]", with: "140")
+        styleContents = styleContents.replacingOccurrences(of: "[FONTSIZE]", with: "100")
         #endif
 
         // Now merge in our adjusted CSS with the main HTML wrapper.

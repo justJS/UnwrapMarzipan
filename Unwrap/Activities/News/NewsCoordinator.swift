@@ -57,6 +57,7 @@ class NewsCoordinator: Coordinator {
         startReading(using: viewController, withURL: article.url)
         #else
         UIApplication.shared.open(article.url)
+        User.current.readNewsStory(forURL: article.url)
         #endif
     }
 

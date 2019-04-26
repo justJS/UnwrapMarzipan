@@ -33,7 +33,7 @@ class HelpViewController: UITableViewController, Storyboarded, TappableTextViewD
         navigationController?.setNavigationBarHidden(true, animated: false)
         Unwrap.marzipanCoordinator?.resetNavigationBar()
         Unwrap.marzipanCoordinator?.setupLeftBarButtonItem(text: "Back", target: coordinator, action: #selector(HomeCoordinator.back))
-        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Credits", target: coordinator, action: #selector(HomeCoordinator.showCredits))
+        // Credits are shown in the App Menu -> About screen on macOS
         #endif
     }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 /// The view controller you see in the News tab in the app.
-class NewsViewController: UITableViewController, Storyboarded, UIViewControllerPreviewingDelegate {
+class NewsViewController: UITableViewController, Storyboarded {
     var coordinator: NewsCoordinator?
 
     /// This handles all the rows in our table view, including downloading news.
@@ -27,6 +27,7 @@ class NewsViewController: UITableViewController, Storyboarded, UIViewControllerP
         assert(coordinator != nil, "You must set a coordinator before presenting this view controller.")
 
         title = "News"
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Buy Swift Books", style: .plain, target: coordinator, action: #selector(NewsCoordinator.buyBooks))
 
         dataSource.delegate = self
