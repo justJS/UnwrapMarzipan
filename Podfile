@@ -9,13 +9,16 @@ target 'Unwrap' do
   inhibit_all_warnings!
 
   # Pods for Unwrap
-  pod 'SwiftEntryKit', '~> 1.0'
+  # pod 'SwiftEntryKit', '~> 1.0', :configurations => ['Debug', 'Release']
   pod 'SDWebImage', '~> 5.0'
   pod 'MKRingProgressView', '~> 2.2.2'
   pod 'Sourceful', :git => 'https://github.com/twostraws/Sourceful.git', :branch => 'master'
   pod 'DZNEmptyDataSet', '~> 1.8'
   pod 'SwiftLint', '0.31.0'
   pod 'Zephyr', '3.4.0'
+
+  # INCLUDE DEPENDENCIES OF OTHER FRAMEWORKS TO ALLOW US TO DISABLE ON MARZIPAN
+  pod 'QuickLayout', :configurations => ['Debug', 'Release'] # SwiftEntryKit
 
   target 'UnwrapTests' do
     inherit! :search_paths
@@ -31,6 +34,15 @@ target 'Unwrap' do
     installer.pods_project.build_configurations.each do |config|
       config.build_settings.delete('CODE_SIGNING_ALLOWED')
       config.build_settings.delete('CODE_SIGNING_REQUIRED')
+    end
+
+    librariesWhichRequireSwift4 = ['SavannaKit', 'SourceEditor']    
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            if librariesWhichRequireSwift4.include?(target.name)
+                config.build_settings['SWIFT_VERSION'] = '4.1'
+            end
+        end
     end
   end
 end

@@ -27,6 +27,16 @@ class PracticeViewController: UITableViewController, UserTracking {
         extendedLayoutIncludesOpaqueBars = true
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        #endif
+    }
+
     /// Refreshes everything when the user changes.
     func userDataChanged() {
         tableView.reloadData()

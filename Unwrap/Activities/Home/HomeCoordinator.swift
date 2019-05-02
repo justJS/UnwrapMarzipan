@@ -8,6 +8,11 @@
 
 import UIKit
 
+// MARZIPAN: Some frameworks are not available on macOS
+#if os(iOS) && !MARZIPAN
+import SafariServices
+#endif
+
 /// Manages everything launched from the Home tab in the app.
 class HomeCoordinator: Coordinator, AlertShowing {
     var splitViewController = UISplitViewController()
@@ -36,7 +41,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 // Put the contents of showTour in here directly avoid trying to capture `self` during an initializer.
                 let viewController = WelcomeViewController.instantiate()
-                viewController.presentAsAlert()
+                viewController.presentAsAlert(on: navigationController)
 
                 // Mark that we've run the app at least once.
                 UserDefaults.standard.set(true, forKey: HomeCoordinator.firstRunDefaultsKey)
@@ -47,7 +52,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
     /// Show the welcome screen with a short app introduction.
     func showTour() {
         let viewController = WelcomeViewController.instantiate()
-        viewController.presentAsAlert()
+        viewController.presentAsAlert(on: navigationController)
     }
 
     /// Show the help screen.
@@ -78,7 +83,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
     func shareBadge(_ badge: Badge) {
         if User.current.isBadgeEarned(badge) {
             // This badge is earned, so share it using the system share sheet.
-            showAlert(title: badge.name, body: badge.description, alternateTitle: "Share") {
+            showAlert(title: badge.name, body: badge.description, on: navigationController, alternateTitle: "Share") {
                 let image = badge.image
                 let text = "I earned the badge \(badge.name) in Unwrap. Download it here: \(Unwrap.appURL)"
 
@@ -98,7 +103,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
             let alert = AlertViewController.instantiate()
             alert.title = badge.name
             alert.body = badge.description.centered() + badgeProgress
-            alert.presentAsAlert()
+            alert.presentAsAlert(on: navigationController)
         }
     }
 
@@ -113,6 +118,8 @@ class HomeCoordinator: Coordinator, AlertShowing {
 
     /// HTTP(S) URLs should be opened internally, but all others – e.g. mailto: – should be opened by the system.
     func open(_ url: URL) {
+        // MARZIPAN: SafariServices is not available on macOS
+        #if os(iOS) && !MARZIPAN
         if url.scheme?.hasPrefix("http") == true {
             // we'll open web URLs inside the app
             let viewController = WebViewController(url: url)
@@ -121,11 +128,18 @@ class HomeCoordinator: Coordinator, AlertShowing {
             // send all other types of URL over to the main application to figure out
             UIApplication.shared.open(url)
         }
+        #else
+        UIApplication.shared.open(url)
+        #endif
     }
 
     /// Show credits for the app.
     @objc func showCredits() {
         let credits = CreditsViewController()
         navigationController.pushViewController(credits, animated: true)
+    }
+
+    @objc func back() {
+        navigationController.popViewController(animated: true)
     }
 }

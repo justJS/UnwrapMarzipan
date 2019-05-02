@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import GameplayKit
 
 extension Float: TypeGenerating {
     static func randomName() -> String {
@@ -19,7 +18,7 @@ extension Float: TypeGenerating {
         let name = randomName()
         let type = ": Float" // always include the type, otherwise this will be a Double
 
-        let value = String(format: "%.4g", Float.scaledRandom())
+        let value = String(format: "%.4g", Float.random(in: 0...1000))
         return "\(storage) \(name)\(type) = \(value)"
     }
 }

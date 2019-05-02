@@ -38,8 +38,21 @@ class ReviewViewController: UIViewController, PracticingViewController {
         assert(coordinator != nil, "You must set a coordinator before presenting this view controller.")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setTitle(title!)
+        Unwrap.marzipanCoordinator?.setupLeftBarButtonItem(text: "Skip", target: self, action: #selector(skip))
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Hint", target: self, action: #selector(hint))
+        #endif
+    }
+
     @objc func hint() {
-        showAlert(body: review.hint)
+        showAlert(body: review.hint, on: self)
     }
 
     @objc func skip() {

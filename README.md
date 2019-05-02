@@ -11,6 +11,8 @@
     </a>
 </p>
 
+## This is a WIP macOS/Marzipan build of Unwrap. Go to the [original repo](https://github.com/twostraws/unwrap) for iPhone and iPad.
+
 Unwrap is an app that helps you learn Swift faster and more effectively.
 
 At its core lies almost 100 video lessons that teach all the fundamentals of the Swift programming language, with each lesson backed up by an interactive review.

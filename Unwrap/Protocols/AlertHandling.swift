@@ -6,7 +6,6 @@
 //  Copyright © 2019 Hacking with Swift.
 //
 
-import SwiftEntryKit
 import UIKit
 
 /// Declares that a conforming type is able to handle alerts being dismissed.

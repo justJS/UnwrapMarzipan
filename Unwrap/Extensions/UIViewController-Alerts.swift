@@ -6,12 +6,18 @@
 //  Copyright © 2019 Hacking with Swift.
 //
 
-import SwiftEntryKit
 import UIKit
+
+// MARZIPAN: Some frameworks are not available on macOS
+#if os(iOS) && !MARZIPAN
+import SwiftEntryKit
+#endif
 
 extension UIViewController: AlertShowing {
     /// Does all the leg work of making any UIViewController be shown inside a pre-styled SwiftEntryKit alert.
-    func presentAsAlert() {
+    func presentAsAlert(on viewController: UIViewController) {
+        // MARZIPAN: SwiftEntryKit is not available on macOS
+        #if os(iOS) && !MARZIPAN
         var attributes = EKAttributes()
         attributes.displayDuration = .infinity
 
@@ -35,6 +41,9 @@ extension UIViewController: AlertShowing {
         view.layer.cornerRadius = 20
 
         SwiftEntryKit.display(entry: self, using: attributes)
+        #else
+        viewController.present(self, animated: true)
+        #endif
     }
 
     /// Shows an alert only if it hasn't already been shown.

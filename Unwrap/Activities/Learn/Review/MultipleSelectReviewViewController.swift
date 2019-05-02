@@ -31,11 +31,35 @@ class MultipleSelectReviewViewController: ReviewViewController, Storyboarded {
         return "Review"
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.setTitle(title!)
+        #endif
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         // warn users there might be more cells to scroll through
         tableView.flashScrollIndicators()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableView.reloadData()
+
+        // Set the theme on Marzipan
+        #if MARZIPAN
+        if UIScreen.main.traitCollection.userInterfaceStyle == .dark {
+            tableView.backgroundColor = .darkGray
+        } else {
+            tableView.backgroundColor = .white
+        }
+        #endif
     }
 
     @IBAction func checkAnswer(_ sender: Any) {
@@ -47,6 +71,11 @@ class MultipleSelectReviewViewController: ReviewViewController, Storyboarded {
 
             answerButton.setTitle("CONTINUE", for: .normal)
             navigationItem.leftBarButtonItem?.isEnabled = false
+
+            // MARZIPAN: Set up macOS navigation bar items
+            #if MARZIPAN
+            Unwrap.marzipanCoordinator?.leftBarButtonItem?.isEnabled = false
+            #endif
         }
     }
 }

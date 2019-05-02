@@ -50,6 +50,16 @@ class SingleSelectReviewViewController: ReviewViewController, Storyboarded {
         code.contentTextView.isEditable = false
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.setTitle(title!)
+        #endif
+    }
+
     @IBAction func selectAnswer(_ sender: UIButton) {
         if isShowingAnswer {
             coordinator?.answerSubmitted(from: self, wasCorrect: currentAnswer.isCorrect)
@@ -62,6 +72,11 @@ class SingleSelectReviewViewController: ReviewViewController, Storyboarded {
         isShowingAnswer = true
         navigationItem.leftBarButtonItem?.isEnabled = false
         selected.setTitle("CONTINUE", for: .normal)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        Unwrap.marzipanCoordinator?.leftBarButtonItem?.isEnabled = false
+        #endif
 
         // disable the other button
         if selected == trueButton {

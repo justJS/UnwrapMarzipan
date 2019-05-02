@@ -6,8 +6,12 @@
 //  Copyright © 2019 Hacking with Swift.
 //
 
-import SwiftEntryKit
 import UIKit
+
+// MARZIPAN: Some frameworks are not available on macOS
+#if os(iOS) && !MARZIPAN
+import SwiftEntryKit
+#endif
 
 /// We have two types of alert: postscript is used specifically for postscript text after chapters, and hint is used for everything else.
 enum AlertType {
@@ -80,7 +84,12 @@ class AlertViewController: UIViewController, Storyboarded {
             coordinator.alertDismissed(type: alertType)
         } else {
             // we don't have a coordinator – just dismiss
+            // MARZIPAN: SwiftEntryKit is not available on macOS
+            #if os(iOS) && !MARZIPAN
             SwiftEntryKit.dismiss()
+            #else
+            dismiss(animated: true)
+            #endif
         }
     }
 }

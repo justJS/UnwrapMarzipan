@@ -27,6 +27,7 @@ class NewsViewController: UITableViewController, UIViewControllerPreviewingDeleg
         assert(coordinator != nil, "You must set a coordinator before presenting this view controller.")
 
         title = "News"
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Buy Swift Books", style: .plain, target: coordinator, action: #selector(NewsCoordinator.buyBooks))
         extendedLayoutIncludesOpaqueBars = true
 
@@ -40,7 +41,10 @@ class NewsViewController: UITableViewController, UIViewControllerPreviewingDeleg
         tableView.tableFooterView = UIView()
         emptyDataSource.delegate = self
 
+        // MARZIPAN: 3D Touch is disabled on macOS for now
+        #if os(iOS) && !MARZIPAN
         registerForPreviewing(with: self, sourceView: tableView)
+        #endif
 
         // Allow folks to pull to refresh stories. Honestly, this will never actually do anything because it's not like I publish *that* often, but it's a bit like close buttons on an elevator – people expect them to work.
         refreshControl = UIRefreshControl()
@@ -48,6 +52,17 @@ class NewsViewController: UITableViewController, UIViewControllerPreviewingDeleg
 
         // Start fetching news articles as soon as we're loaded.
         fetchArticles()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Buy Swift Books", target: coordinator, action: #selector(NewsCoordinator.buyBooks))
+        #endif
     }
 
     /// Clears our tab badge as soon as we're shown.
@@ -81,7 +96,11 @@ class NewsViewController: UITableViewController, UIViewControllerPreviewingDeleg
         coordinator?.read(article)
         tableView.reloadData()
     }
+}
 
+// MARZIPAN: 3D Touch is disabled on macOS for now
+#if os(iOS) && !MARZIPAN
+extension NewsViewController: UIViewControllerPreviewingDelegate {
     /// Called when the user 3D touches on a news story.
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = tableView.indexPathForRow(at: location) {
@@ -99,3 +118,4 @@ class NewsViewController: UITableViewController, UIViewControllerPreviewingDeleg
         tableView.reloadData()
     }
 }
+#endif

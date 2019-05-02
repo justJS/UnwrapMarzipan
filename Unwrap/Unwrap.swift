@@ -23,6 +23,11 @@ enum Unwrap {
         return entropy
     }
 
+    // MARZIPAN: MarzipanCoordinator sets up menus, navigations bars, etc
+    #if MARZIPAN
+    static var marzipanCoordinator: MarzipanCoordinator?
+    #endif
+
     /// The basic font used for code in the app, scaled up for Dynamic Type.
     static var codeFont: UIFont {
         let metrics = UIFontMetrics(forTextStyle: .body)

@@ -8,6 +8,11 @@
 
 import UIKit
 
+// MARZIPAN: Some frameworks are not available on macOS
+#if os(iOS) && !MARZIPAN
+import SafariServices
+#endif
+
 /// Manages everything launched from the News tab in the app.
 class NewsCoordinator: Coordinator {
     var splitViewController = UISplitViewController()
@@ -56,6 +61,7 @@ class NewsCoordinator: Coordinator {
     func read(_ article: NewsArticle) {
         let viewController = articleViewController(for: article)
         startReading(using: viewController, withURL: article.url)
+        User.current.readNewsStory(forURL: article.url)
     }
 
     /// Loads the Hacking with Swift store.

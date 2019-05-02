@@ -24,6 +24,21 @@ class LearnDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         return Unwrap.chapters[section].name
     }
 
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let view = view as? UITableViewHeaderFooterView else { return }
+
+        // Set the theme on Marzipan
+        #if MARZIPAN
+        if delegate?.traitCollection.userInterfaceStyle == .some(.dark) {
+            view.textLabel?.textColor = .lightText
+            view.backgroundView?.backgroundColor = .darkGray
+        } else {
+            view.textLabel?.textColor = .darkText
+            view.backgroundView?.backgroundColor = .lightGray
+        }
+        #endif
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Unwrap.chapters[section].sections.count
     }
@@ -31,6 +46,7 @@ class LearnDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
+        cell.backgroundColor = .clear
 
         let chapter = Unwrap.chapters[indexPath.section]
         let section = chapter.sections[indexPath.row]
@@ -56,6 +72,15 @@ class LearnDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
             cell.imageView?.tintColor = UIColor(bundleName: "CourseFull")
             cell.imageView?.alpha = 1
         }
+
+        // Set the theme on Marzipan
+        #if MARZIPAN
+        if delegate?.traitCollection.userInterfaceStyle == .some(.dark) {
+            cell.textLabel?.textColor = .lightText
+        } else {
+            cell.textLabel?.textColor = .darkText
+        }
+        #endif
 
         return cell
     }

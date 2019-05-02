@@ -33,6 +33,22 @@ class LearnViewController: UITableViewController, UserTracking, UIViewController
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Glossary", target: self, action: #selector(showGlossary))
+        #endif
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableView.reloadData()
+    }
+
     /// Refreshes everything when the user changes.
     func userDataChanged() {
         tableView.reloadData()

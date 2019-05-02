@@ -72,17 +72,25 @@ extension String {
         var wrapperContents = String(bundleName: "HTMLWrapper.html")
 
         // Replace relative URLs of images with absolute URLs.
+        // MARZIPAN: Attributed Strings from HTML don't work on macOS
+        #if os(iOS) && !MARZIPAN
         wrapperContents = wrapperContents.replacingOccurrences(of: "<img src=\"", with: "<img src=\"\(Bundle.main.resourceURL!)/")
+        #endif
 
         // Add in the currently selected theme.
         let currentTheme = User.current.theme
         var styleContents = String(bundleName: "\(currentTheme)Theme.css")
 
+        // MARZIPAN: Attributed Strings from HTML don't work on macOS
+        #if os(iOS) && !MARZIPAN
         // Scale up fonts based on Dynamic Type.
         let metrics = UIFontMetrics(forTextStyle: .body)
         let scaledSize = metrics.scaledValue(for: 140)
         styleContents = styleContents.replacingOccurrences(of: "[FONTSIZE]", with: "\(scaledSize)")
-
+        #else
+        styleContents = styleContents.replacingOccurrences(of: "[FONTSIZE]", with: "100")
+        #endif
+        
         // Force images to be the natural screen width.
         styleContents = styleContents.replacingOccurrences(of: "[IMAGEWIDTH]", with: "\(width)px")
 

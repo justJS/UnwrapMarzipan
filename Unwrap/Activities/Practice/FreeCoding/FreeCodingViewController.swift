@@ -61,6 +61,17 @@ class FreeCodingViewController: UIViewController, Storyboarded, PracticingViewCo
         showHintButton()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        Unwrap.marzipanCoordinator?.resetNavigationBar()
+        Unwrap.marzipanCoordinator?.setTitle(title!)
+        Unwrap.marzipanCoordinator?.setupLeftBarButtonItem(text: "Skip", target: self, action: #selector(skip))
+        #endif
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -71,10 +82,15 @@ class FreeCodingViewController: UIViewController, Storyboarded, PracticingViewCo
     @objc func showHintButton() {
         textView.contentTextView.resignFirstResponder()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Hint", style: .plain, target: self, action: #selector(hint))
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Hint", target: self, action: #selector(hint))
+        #endif
     }
 
     @objc func hint() {
-        showAlert(body: practiceData.hint)
+        showAlert(body: practiceData.hint, on: self)
     }
 
     @objc func skip() {
@@ -104,12 +120,18 @@ class FreeCodingViewController: UIViewController, Storyboarded, PracticingViewCo
 
     /// Give users the choice of trying again or skipping
     func skipOrRetry() {
-        showAlert(title: "That's not quite right!", body: "Check your code carefully, and try going for the simplest solution that works.", coordinator: nil, alternateTitle: nil, alternateAction: nil)
+        showAlert(title: "That's not quite right!", body: "Check your code carefully, and try going for the simplest solution that works.", on: self, coordinator: nil, alternateTitle: nil, alternateAction: nil)
     }
 
     /// Allows users to dismiss the keyboard when they are ready, so they can tap submit
     func textViewDidBeginEditing(_ textView: SyntaxTextView) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(showHintButton))
+
+        // MARZIPAN: Set up macOS navigation bar items
+        #if MARZIPAN
+        Unwrap.marzipanCoordinator?.setTitle(title!)
+        Unwrap.marzipanCoordinator?.setupRightBarButtonItem(text: "Done", target: self, action: #selector(showHintButton))
+        #endif
     }
 
     /// Called when the user taps a key symbol in our input accessory view.

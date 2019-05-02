@@ -7,8 +7,12 @@
 //
 
 import AVKit
-import SwiftEntryKit
 import UIKit
+
+// MARZIPAN: Some frameworks are not available on macOS
+#if os(iOS) && !MARZIPAN
+import SwiftEntryKit
+#endif
 
 /// Manages everything launched from the Learn tab in the app.
 class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerHandling, UISplitViewControllerDelegate {
@@ -24,7 +28,15 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
         primaryNavigationController.navigationBar.prefersLargeTitles = true
         primaryNavigationController.coordinator = self
 
-        let viewController = LearnViewController(style: .plain)
+        var style: UITableView.Style
+        #if MARZIPAN
+        style = UITableView.Style(rawValue: Int(UITableViewStyleSidebar))!
+        #else
+        style = .plain
+        #endif
+
+        let viewController = LearnViewController(style: style)
+        viewController.tabBarItem = UITabBarItem(title: "Learn", image: UIImage(bundleName: "Learn"), tag: 1)
         viewController.coordinator = self
         primaryNavigationController.viewControllers = [viewController]
 
@@ -126,16 +138,23 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
         alert.title = activeStudyReview.title
         alert.alertType = .postscript
         alert.body = activeStudyReview.postscript.fromSimpleHTML()
-        alert.presentAsAlert()
+        alert.presentAsAlert(on: navigationController)
     }
 
     /// This will get called when the postscript has been dismissed, so we can move on to review.
     func alertDismissed(type: AlertType) {
-        SwiftEntryKit.dismiss {
+        let handler = {
             if type == .postscript {
                 self.beginReview()
             }
         }
+
+        // MARZIPAN: SwiftEntryKit is not available on macOS
+        #if os(iOS) && !MARZIPAN
+        SwiftEntryKit.dismiss(with: handler)
+        #else
+        navigationController.dismiss(animated: true, completion: handler)
+        #endif
     }
 
     /// This is called when the user has submitted an answer to a review view controller. If it's a single selection view controller then we either finish reviewing or show another single selection view controller; if it's a multiple selection view controller then we're finished reviewing because that's only one screen.
@@ -202,5 +221,9 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
         let viewController = WebViewController(url: url)
         let detailNav = CoordinatedNavigationController(rootViewController: viewController)
         splitViewController.showDetailViewController(detailNav, sender: self)
+    }
+
+    @objc func back() {
+        navigationController.popViewController(animated: true)
     }
 }
