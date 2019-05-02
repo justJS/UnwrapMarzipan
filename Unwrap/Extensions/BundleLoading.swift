@@ -87,11 +87,12 @@ extension String {
         let metrics = UIFontMetrics(forTextStyle: .body)
         let scaledSize = metrics.scaledValue(for: 140)
         styleContents = styleContents.replacingOccurrences(of: "[FONTSIZE]", with: "\(scaledSize)")
-
-        styleContents = styleContents.replacingOccurrences(of: "[IMAGEWIDTH]", with: "\(UIScreen.main.bounds.width)px")
         #else
         styleContents = styleContents.replacingOccurrences(of: "[FONTSIZE]", with: "100")
         #endif
+        
+        // Force images to be the natural screen width.
+        styleContents = styleContents.replacingOccurrences(of: "[IMAGEWIDTH]", with: "\(UIApplication.shared.keyWindow?.frame.width ?? 320)px")
 
         // Now merge in our adjusted CSS with the main HTML wrapper.
         wrapperContents = wrapperContents.replacingOccurrences(of: "[STYLE]", with: styleContents)
@@ -110,17 +111,6 @@ extension UIColor {
 extension UIImage {
     /// Creates a UIImage instance from a filename in our bundle.
     convenience init(bundleName: String) {
-        if UIImage(named: bundleName) != nil {
-            self.init(named: bundleName)!
-        } else {
-            var log = """
-            Name: \(bundleName)
-            Normal: \(UIImage(named: bundleName))
-            SpecificBundle: \(UIImage(named: bundleName, in: Bundle(for: HomeCoordinator.self), compatibleWith: nil))
-            """
-            fatalError(log)
-        }
-
-//        fatalError("Fuck \(bundleName)")
+        self.init(named: bundleName)!
     }
 }

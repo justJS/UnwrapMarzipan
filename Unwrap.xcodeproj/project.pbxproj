@@ -92,6 +92,8 @@
 		518FAE7920E433A5007F4675 /* MultipleSelectReviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518FAE7820E433A5007F4675 /* MultipleSelectReviewDataSource.swift */; };
 		5192241C210E2767007D7D74 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192241B210E2767007D7D74 /* DarkTheme.swift */; };
 		5192587320E3A11200A85704 /* NSAttributedString-Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192587220E3A11200A85704 /* NSAttributedString-Formatting.swift */; };
+		5192DDCC2273E05F0081C6DE /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5192DDCB2273E05F0081C6DE /* Stickers.xcassets */; };
+		5192DDD02273E05F0081C6DE /* Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5192DDC92273E05E0081C6DE /* Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		519CD3D020EBA208007110BD /* RearrangeTheLines.json in Resources */ = {isa = PBXBuildFile; fileRef = 519CD3CF20EBA208007110BD /* RearrangeTheLines.json */; };
 		519CD3D220EBA35B007110BD /* RearrangeTheLinesPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519CD3D120EBA35B007110BD /* RearrangeTheLinesPractice.swift */; };
 		519CD3D420EBA601007110BD /* RearrangeTheLinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519CD3D320EBA601007110BD /* RearrangeTheLinesViewController.swift */; };
@@ -663,9 +665,22 @@
 		B9829657223A809B004EB968 /* MarzipanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9829656223A809B004EB968 /* MarzipanCoordinator.swift */; };
 		FBCAB466480A05C9E3D694CF /* Pods_Unwrap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1042D2A80E9E96DA0B7C6F35 /* Pods_Unwrap.framework */; };
 		FEBC8E7F2267573B00A33F05 /* Zephyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBC8E7E2267573B00A33F05 /* Zephyr.swift */; };
+		B93AEC4B2273DB68005A50DF /* PracticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93AEC4A2273DB68005A50DF /* PracticeTableViewCell.swift */; };
+		B93AEC4D2273DE70005A50DF /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93AEC4C2273DE70005A50DF /* ChallengeTableViewCell.swift */; };
+		B93AEC4F2273DF03005A50DF /* PreviousChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93AEC4E2273DF03005A50DF /* PreviousChallengeTableViewCell.swift */; };
+		B96D1C3F227333BE0096492B /* GlossaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D1C3E227333BE0096492B /* GlossaryTableViewCell.swift */; };
+		FBCAB466480A05C9E3D694CF /* Pods_Unwrap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1042D2A80E9E96DA0B7C6F35 /* Pods_Unwrap.framework */; };
+		FE81585F2274F8C2007E5E11 /* User-Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE81585E2274F8C2007E5E11 /* User-Progress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5192DDCE2273E05F0081C6DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51CC13572065607C00F37A67 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5192DDC82273E05E0081C6DE;
+			remoteInfo = Stickers;
+		};
 		51CC13742065607F00F37A67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 51CC13572065607C00F37A67 /* Project object */;
@@ -681,6 +696,20 @@
 			remoteInfo = Unwrap;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5192DD852273DCE20081C6DE /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5192DDD02273E05F0081C6DE /* Stickers.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0DEB0FC60868823894F964FD /* Pods-UnwrapUITests.marzipan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapUITests.marzipan.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapUITests/Pods-UnwrapUITests.marzipan.xcconfig"; sourceTree = "<group>"; };
@@ -777,6 +806,9 @@
 		518FAE7820E433A5007F4675 /* MultipleSelectReviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectReviewDataSource.swift; sourceTree = "<group>"; };
 		5192241B210E2767007D7D74 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
 		5192587220E3A11200A85704 /* NSAttributedString-Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString-Formatting.swift"; sourceTree = "<group>"; };
+		5192DDC92273E05E0081C6DE /* Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Stickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5192DDCB2273E05F0081C6DE /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
+		5192DDCD2273E05F0081C6DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		519CD3CF20EBA208007110BD /* RearrangeTheLines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RearrangeTheLines.json; sourceTree = "<group>"; };
 		519CD3D120EBA35B007110BD /* RearrangeTheLinesPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RearrangeTheLinesPractice.swift; sourceTree = "<group>"; };
 		519CD3D320EBA601007110BD /* RearrangeTheLinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RearrangeTheLinesViewController.swift; sourceTree = "<group>"; };
@@ -1352,11 +1384,16 @@
 		B9829656223A809B004EB968 /* MarzipanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarzipanCoordinator.swift; sourceTree = "<group>"; };
 		B9829658223A835B004EB968 /* Marzipan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marzipan.h; sourceTree = "<group>"; };
 		B9829659223A8493004EB968 /* Unwrap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Unwrap-Bridging-Header.h"; sourceTree = "<group>"; };
+		B93AEC4A2273DB68005A50DF /* PracticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableViewCell.swift; sourceTree = "<group>"; };
+		B93AEC4C2273DE70005A50DF /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		B93AEC4E2273DF03005A50DF /* PreviousChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		B96D1C3E227333BE0096492B /* GlossaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossaryTableViewCell.swift; sourceTree = "<group>"; };
 		BB24D72F99ED46CE1F202A82 /* Pods-Unwrap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unwrap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unwrap/Pods-Unwrap.debug.xcconfig"; sourceTree = "<group>"; };
 		BE61552411B754C7764869FE /* Pods-UnwrapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapUITests/Pods-UnwrapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE64715D944F01A45D8EE2EB /* Pods-UnwrapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwrapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnwrapUITests/Pods-UnwrapUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DD9A9FDC401B2E4E93A13259 /* Pods_UnwrapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnwrapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBC8E7E2267573B00A33F05 /* Zephyr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zephyr.swift; sourceTree = "<group>"; };
+		FE81585E2274F8C2007E5E11 /* User-Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User-Progress.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1447,6 +1484,7 @@
 			children = (
 				514BF46921E6691A00DE1483 /* GlossaryViewController.swift */,
 				514BF46B21E6693100DE1483 /* GlossaryDataSource.swift */,
+				B96D1C3E227333BE0096492B /* GlossaryTableViewCell.swift */,
 				514BF46D21E6698C00DE1483 /* GlossaryEntry.swift */,
 			);
 			path = Glossary;
@@ -1531,6 +1569,7 @@
 				51862E5920CE12330086CD1B /* User.swift */,
 				51B87CD6210B270800FE773A /* User-Serialization.swift */,
 				51B87CDD210B35C600FE773A /* User-StaticProperties.swift */,
+				FE81585E2274F8C2007E5E11 /* User-Progress.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1554,6 +1593,15 @@
 				51FE12A720E25F1100F29889 /* DarkTheme.css */,
 			);
 			path = Dark;
+			sourceTree = "<group>";
+		};
+		5192DDCA2273E05E0081C6DE /* Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				5192DDCB2273E05F0081C6DE /* Stickers.xcassets */,
+				5192DDCD2273E05F0081C6DE /* Info.plist */,
+			);
+			path = Stickers;
 			sourceTree = "<group>";
 		};
 		51A6D61920E6511100FB6B46 /* TypeChecker */ = {
@@ -1696,6 +1744,7 @@
 				5153F49520EF762B009E829D /* PracticeCoordinator.swift */,
 				51C5642220CCB82B0093030C /* PracticeViewController.swift */,
 				51862E6720CE7DE40086CD1B /* PracticeDataSource.swift */,
+				B93AEC4A2273DB68005A50DF /* PracticeTableViewCell.swift */,
 				51862E6920CE84FB0086CD1B /* PracticeActivity.swift */,
 				5153F49B20EF917B009E829D /* PracticingViewController.swift */,
 			);
@@ -1707,6 +1756,8 @@
 			children = (
 				5153F49720EF763E009E829D /* ChallengesCoordinator.swift */,
 				51C5642420CCB8350093030C /* ChallengesViewController.swift */,
+				B93AEC4C2273DE70005A50DF /* ChallengeTableViewCell.swift */,
+				B93AEC4E2273DF03005A50DF /* PreviousChallengeTableViewCell.swift */,
 				51862E6C20CE8B980086CD1B /* ChallengesDataSource.swift */,
 				51ADAEA420CE9004000D9DCF /* ChallengeResult.swift */,
 			);
@@ -1719,6 +1770,7 @@
 				51CC13612065607C00F37A67 /* Unwrap */,
 				51CC13762065607F00F37A67 /* UnwrapTests */,
 				51CC13812065607F00F37A67 /* UnwrapUITests */,
+				5192DDCA2273E05E0081C6DE /* Stickers */,
 				51CC13602065607C00F37A67 /* Products */,
 				A302CA35FC779D934F639FFC /* Pods */,
 				1A0DCD8097A144079E40A939 /* Frameworks */,
@@ -1731,6 +1783,7 @@
 				51CC135F2065607C00F37A67 /* Unwrap.app */,
 				51CC13732065607F00F37A67 /* UnwrapTests.xctest */,
 				51CC137E2065607F00F37A67 /* UnwrapUITests.xctest */,
+				5192DDC92273E05E0081C6DE /* Stickers.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2382,6 +2435,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5192DDC82273E05E0081C6DE /* Stickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5192DDD12273E05F0081C6DE /* Build configuration list for PBXNativeTarget "Stickers" */;
+			buildPhases = (
+				5192DDC72273E05E0081C6DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stickers;
+			productName = Stickers;
+			productReference = 5192DDC92273E05E0081C6DE /* Stickers.appex */;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
+		};
 		51CC135E2065607C00F37A67 /* Unwrap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51CC13872065607F00F37A67 /* Build configuration list for PBXNativeTarget "Unwrap" */;
@@ -2393,10 +2461,12 @@
 				0162EA90CF6B9E2940757700 /* [CP] Embed Pods Frameworks */,
 				C90D15D421EA485C004116DB /* Swiftlint */,
 				B982923F2239F182004EB968 /* Build Marzipan */,
+				5192DD852273DCE20081C6DE /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5192DDCF2273E05F0081C6DE /* PBXTargetDependency */,
 			);
 			name = Unwrap;
 			productName = Unwrap;
@@ -2451,6 +2521,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Hacking with Swift";
 				TargetAttributes = {
+					5192DDC82273E05E0081C6DE = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 					51CC135E2065607C00F37A67 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1020;
@@ -2491,11 +2564,20 @@
 				51CC135E2065607C00F37A67 /* Unwrap */,
 				51CC13722065607F00F37A67 /* UnwrapTests */,
 				51CC137D2065607F00F37A67 /* UnwrapUITests */,
+				5192DDC82273E05E0081C6DE /* Stickers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5192DDC72273E05E0081C6DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5192DDCC2273E05F0081C6DE /* Stickers.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		51CC135D2065607C00F37A67 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3192,9 +3274,11 @@
 				51A6D66C20E696A300FB6B46 /* SpotTheErrorPractice.swift in Sources */,
 				514BF46E21E6698C00DE1483 /* GlossaryEntry.swift in Sources */,
 				51C5642520CCB8350093030C /* ChallengesViewController.swift in Sources */,
+				B96D1C3F227333BE0096492B /* GlossaryTableViewCell.swift in Sources */,
 				51596DEC20EE1C9F00952ADC /* WordCollectionViewCell.swift in Sources */,
 				51A6D62320E651DA00FB6B46 /* DoubleNames.swift in Sources */,
 				5153F49620EF762B009E829D /* PracticeCoordinator.swift in Sources */,
+				B93AEC4B2273DB68005A50DF /* PracticeTableViewCell.swift in Sources */,
 				4C7232A2221C223600D169E9 /* ReviewSingleSelectViewController.swift in Sources */,
 				51A6D63620E6539200FB6B46 /* FreeCodingQuestion.swift in Sources */,
 				5153F4AE20F007EF009E829D /* UIViewController-Alerts.swift in Sources */,
@@ -3225,6 +3309,7 @@
 				514BF46C21E6693100DE1483 /* GlossaryDataSource.swift in Sources */,
 				51862E5A20CE12330086CD1B /* User.swift in Sources */,
 				511FD6A92105E6B00023E92C /* NewsViewController.swift in Sources */,
+				B93AEC4D2273DE70005A50DF /* ChallengeTableViewCell.swift in Sources */,
 				51596DEA20EE04EF00952ADC /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				51A4476D210926FE005D8665 /* CountedSet.swift in Sources */,
 				B9829657223A809B004EB968 /* MarzipanCoordinator.swift in Sources */,
@@ -3240,6 +3325,7 @@
 				5144932E20E55FF400D15AA5 /* SingleSelectReviewViewController.swift in Sources */,
 				51CC13632065607C00F37A67 /* AppDelegate.swift in Sources */,
 				51E35647223CE43400C05881 /* Float-Random.swift in Sources */,
+				FE81585F2274F8C2007E5E11 /* User-Progress.swift in Sources */,
 				51CC139D2065AB8500F37A67 /* GradientView.swift in Sources */,
 				511FD6AD2105E72C0023E92C /* NewsCoordinator.swift in Sources */,
 				5153F49E20EF93CF009E829D /* TypeCheckerViewController.swift in Sources */,
@@ -3254,6 +3340,7 @@
 				51DB1D79222D9648005CB620 /* WrongAnswer.swift in Sources */,
 				51A6D62720E651DA00FB6B46 /* FloatNames.swift in Sources */,
 				51A6D66820E6953100FB6B46 /* CodeErrorType.swift in Sources */,
+				B93AEC4F2273DF03005A50DF /* PreviousChallengeTableViewCell.swift in Sources */,
 				4C8950C42253633F002F9FA6 /* NewsTableViewCell.swift in Sources */,
 				51B87CDE210B35C600FE773A /* User-StaticProperties.swift in Sources */,
 				511FD6B12105F07A0023E92C /* URL-String.swift in Sources */,
@@ -3318,6 +3405,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5192DDCF2273E05F0081C6DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5192DDC82273E05E0081C6DE /* Stickers */;
+			targetProxy = 5192DDCE2273E05F0081C6DE /* PBXContainerItemProxy */;
+		};
 		51CC13752065607F00F37A67 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 51CC135E2065607C00F37A67 /* Unwrap */;
@@ -3350,6 +3442,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5192DDD22273E05F0081C6DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B5C26XE59E;
+				INFOPLIST_FILE = Stickers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.unwrapswift.Stickers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5192DDD32273E05F0081C6DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B5C26XE59E;
+				INFOPLIST_FILE = Stickers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.unwrapswift.Stickers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		51CC13852065607F00F37A67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3737,6 +3862,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5192DDD12273E05F0081C6DE /* Build configuration list for PBXNativeTarget "Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5192DDD22273E05F0081C6DE /* Debug */,
+				5192DDD32273E05F0081C6DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		51CC135A2065607C00F37A67 /* Build configuration list for PBXProject "Unwrap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

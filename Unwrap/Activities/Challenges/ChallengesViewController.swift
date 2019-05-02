@@ -9,7 +9,7 @@
 import UIKit
 
 /// The main view controller you see in  the Challenges tab in the app.
-class ChallengesViewController: UITableViewController, Storyboarded, UserTracking {
+class ChallengesViewController: UITableViewController, UserTracking {
     var coordinator: ChallengesCoordinator?
 
     /// This handles all the rows in our table view.
@@ -22,7 +22,10 @@ class ChallengesViewController: UITableViewController, Storyboarded, UserTrackin
 
         title = "Challenges"
         registerForUserChanges()
+
         tableView.dataSource = dataSource
+        tableView.register(ChallengeTableViewCell.self, forCellReuseIdentifier: "Challenge")
+        tableView.register(PreviousChallengeTableViewCell.self, forCellReuseIdentifier: "PreviousChallenge")
 
         NotificationCenter.default.addObserver(self, selector: #selector(userDataChanged), name: UIApplication.willEnterForegroundNotification, object: nil)
 
@@ -53,7 +56,8 @@ class ChallengesViewController: UITableViewController, Storyboarded, UserTrackin
             }
         } else {
             guard User.current.dailyChallenges.count > 0 else { return }
-            coordinator?.shareScore(User.current.dailyChallenges[indexPath.row])
+            let sourceRect = tableView.rectForRow(at: indexPath)
+            coordinator?.shareScore(User.current.dailyChallenges[indexPath.row], from: sourceRect)
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }

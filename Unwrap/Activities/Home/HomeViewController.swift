@@ -108,7 +108,8 @@ class HomeViewController: UITableViewController, Storyboarded, UserTracking {
         let shareScorePath = IndexPath(row: 4, section: 1)
 
         if indexPath == shareScorePath {
-            coordinator?.shareScore()
+            let rect = tableView.rectForRow(at: indexPath)
+            coordinator?.shareScore(from: rect)
         }
 
         tableView.deselectRow(at: indexPath, animated: true)

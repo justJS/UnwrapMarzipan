@@ -52,10 +52,24 @@ extension String {
 
     /// Adds syntax highlighting to a string using Source Editor.
     func syntaxHighlighted() -> NSAttributedString {
+        let reflowed = self.fixingLineWrapping()
+
         let theme = User.current.sourceCodeTheme
         let lexer = SwiftLexer()
-        let tokens = lexer.getSavannaTokens(input: self)
+        let tokens = lexer.getSavannaTokens(input: reflowed)
 
-        return NSMutableAttributedString(source: self, tokens: tokens, theme: theme)
+        return NSMutableAttributedString(source: reflowed, tokens: tokens, theme: theme)
+    }
+
+    /// Returns an attributed string with center alignment
+    func centered() -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: paragraphStyle
+        ]
+
+        return NSAttributedString(string: self, attributes: attributes)
     }
 }

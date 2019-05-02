@@ -9,7 +9,7 @@
 import UIKit
 
 /// The view controller you see in the News tab in the app.
-class NewsViewController: UITableViewController, Storyboarded {
+class NewsViewController: UITableViewController, UIViewControllerPreviewingDelegate {
     var coordinator: NewsCoordinator?
 
     /// This handles all the rows in our table view, including downloading news.
@@ -32,6 +32,7 @@ class NewsViewController: UITableViewController, Storyboarded {
 
         dataSource.delegate = self
         tableView.dataSource = dataSource
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "Cell")
 
         // Configure DZNEmptyDataSource to show a meaningful message when news loading fails. We need to create an empty table footer view to stop separators appearing everywhere.
         tableView.emptyDataSetSource = emptyDataSource

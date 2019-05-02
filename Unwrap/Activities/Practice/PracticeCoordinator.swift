@@ -26,7 +26,7 @@ class PracticeCoordinator: Coordinator, Awarding, Skippable, AnswerHandling {
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.coordinator = self
 
-        let viewController = PracticeViewController.instantiate()
+        let viewController = PracticeViewController(style: .plain)
         viewController.tabBarItem = UITabBarItem(title: "Practice", image: UIImage(bundleName: "Practice"), tag: 2)
         viewController.coordinator = self
         navigationController.viewControllers = [viewController]
@@ -64,8 +64,8 @@ class PracticeCoordinator: Coordinator, Awarding, Skippable, AnswerHandling {
             currentScore += User.pointsForPracticing
         }
 
-        // Practice sessions are limited to 5 questions per type, so check if it's time to end the session.
-        if practicingViewController.questionNumber == 5 {
+        // Practice sessions are limited to 10 questions per type, so check if it's time to end the session.
+        if practicingViewController.questionNumber == 10 {
             finishedPracticing(type: practicingViewController.practiceType)
         } else {
             // We're not finished yet, so make a fresh instance of our practice type, move its question number along one, then show it.
@@ -90,8 +90,8 @@ class PracticeCoordinator: Coordinator, Awarding, Skippable, AnswerHandling {
         returnToStart(pointsAwarded: false)
     }
 
-    /// Add something like "(2/5)" to the title of each practice activity.
+    /// Add something like "(2/10)" to the title of each practice activity.
     func titleSuffix(for item: Sequenced) -> String {
-        return " (\(item.questionNumber)/5)"
+        return " (\(item.questionNumber)/10)"
     }
 }
