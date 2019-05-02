@@ -35,6 +35,7 @@ class SpotTheErrorViewController: UIViewController, Storyboarded, PracticingView
 
         title = "Spot the Error" + (coordinator?.titleSuffix(for: self) ?? "")
         navigationItem.largeTitleDisplayMode = .never
+        extendedLayoutIncludesOpaqueBars = true
 
         dataSource = SpotTheErrorDataSource(practiceData: practiceData)
         dataSource.delegate = self
@@ -81,9 +82,11 @@ class SpotTheErrorViewController: UIViewController, Storyboarded, PracticingView
     func selectionChanged() {
         if let number = dataSource.selectedAnswer {
             answerButton.setTitle("ERROR ON LINE \(number + 1)", for: .normal)
+            answerButton.backgroundColor = UIColor(bundleName: "Primary")
             answerButton.isEnabled = true
         } else {
             answerButton.setTitle("SELECT A LINE", for: .normal)
+            answerButton.backgroundColor = UIColor(bundleName: "PrimaryDisabled")
             answerButton.isEnabled = false
         }
     }

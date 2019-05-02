@@ -29,6 +29,7 @@ class NewsViewController: UITableViewController, UIViewControllerPreviewingDeleg
         title = "News"
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Buy Swift Books", style: .plain, target: coordinator, action: #selector(NewsCoordinator.buyBooks))
+        extendedLayoutIncludesOpaqueBars = true
 
         dataSource.delegate = self
         tableView.dataSource = dataSource
@@ -105,7 +106,7 @@ extension NewsViewController: UIViewControllerPreviewingDelegate {
         if let indexPath = tableView.indexPathForRow(at: location) {
             previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
             currentSelectedArticle = dataSource.article(at: indexPath.row)
-            return coordinator?.readViewController(for: currentSelectedArticle)
+            return coordinator?.articleViewController(for: currentSelectedArticle)
         }
 
         return nil

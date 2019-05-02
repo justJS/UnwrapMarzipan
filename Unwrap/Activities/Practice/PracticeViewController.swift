@@ -24,6 +24,7 @@ class PracticeViewController: UITableViewController, UserTracking {
         registerForUserChanges()
         tableView.dataSource = dataSource
         tableView.register(PracticeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        extendedLayoutIncludesOpaqueBars = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +40,13 @@ class PracticeViewController: UITableViewController, UserTracking {
     /// Refreshes everything when the user changes.
     func userDataChanged() {
         tableView.reloadData()
+    }
+
+    /// Deselects the currently selected row in the table view when a practice activity is stopped
+    func resetTableView() {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 
     /// When the user selects a practice activity, pull it out from our data source and ask the coordinator to kick it off.

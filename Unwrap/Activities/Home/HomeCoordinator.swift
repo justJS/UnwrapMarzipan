@@ -15,6 +15,7 @@ import SafariServices
 
 /// Manages everything launched from the Home tab in the app.
 class HomeCoordinator: Coordinator, AlertShowing {
+    var splitViewController = UISplitViewController()
     var navigationController: CoordinatedNavigationController
 
     private static let firstRunDefaultsKey = "ShownFirstRun"
@@ -121,8 +122,8 @@ class HomeCoordinator: Coordinator, AlertShowing {
         #if os(iOS) && !MARZIPAN
         if url.scheme?.hasPrefix("http") == true {
             // we'll open web URLs inside the app
-            let viewController = SFSafariViewController(url: url)
-            navigationController.present(viewController, animated: true)
+            let viewController = WebViewController(url: url)
+            navigationController.pushViewController(viewController, animated: true)
         } else {
             // send all other types of URL over to the main application to figure out
             UIApplication.shared.open(url)

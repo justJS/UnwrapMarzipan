@@ -21,11 +21,19 @@ class StudyViewController: UIViewController, TappableTextViewDelegate {
     var studyWebView = WKWebView()
     #endif
 
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        navigationItem.largeTitleDisplayMode = .never
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func loadView() {
         // MARZIPAN: Attributed Strings from HTML don't work on macOS
         #if os(iOS) && !MARZIPAN
         studyTextView.linkDelegate = self
-        studyTextView.loadContent(chapter)
         view = studyTextView
         #else
         studyWebView.loadHTMLString(NSAttributedString.html(chapterName: chapter), baseURL: Bundle.main.resourceURL)
@@ -38,15 +46,17 @@ class StudyViewController: UIViewController, TappableTextViewDelegate {
 
         assert(coordinator != nil, "You must set a coordinator before presenting this view controller.")
 
-        navigationItem.largeTitleDisplayMode = .never
+        extendedLayoutIncludesOpaqueBars = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: coordinator, action: #selector(LearnCoordinator.finishedStudying))
 
         // always include the safe area insets in the scroll view content adjustment
         studyTextView.contentInsetAdjustmentBehavior = .always
     }
 
+    // It's important we do content loading here, because a) loadView() is too early – here the text view has fully loaded and has its correct size, which means the movie image will be rendered correctly, and b) viewDidLayoutSubviews() is too late – it causes a layout loop.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        studyTextView.loadContent(chapter)
 
         // MARZIPAN: Set up macOS navigation bar items
         #if MARZIPAN

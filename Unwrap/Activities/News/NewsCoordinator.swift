@@ -15,62 +15,60 @@ import SafariServices
 
 /// Manages everything launched from the News tab in the app.
 class NewsCoordinator: Coordinator {
-    var navigationController: CoordinatedNavigationController
+    var splitViewController = UISplitViewController()
+    var primaryNavigationController = CoordinatedNavigationController()
 
-    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
-        self.navigationController = navigationController
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.coordinator = self
+    init() {
+        // Set up the master view controller
+        primaryNavigationController.navigationBar.prefersLargeTitles = true
+        primaryNavigationController.coordinator = self
 
         let viewController = NewsViewController(style: .plain)
-        viewController.tabBarItem = UITabBarItem(title: "News", image: UIImage(bundleName: "News"), tag: 4)
         viewController.coordinator = self
 
-        navigationController.viewControllers = [viewController]
+        primaryNavigationController.viewControllers = [viewController]
 
         // force our view controller to load immediately, so we download the news in the background rather than waiting for users to go to the tab
         viewController.loadViewIfNeeded()
+
+        // Set up the detail view controller
+        let detailViewController = PleaseSelectViewController.instantiate()
+        detailViewController.selectionMode = .news
+
+        splitViewController.viewControllers = [primaryNavigationController, detailViewController]
+        splitViewController.tabBarItem = UITabBarItem(title: "News", image: UIImage(bundleName: "News"), tag: 4)
+
+        // make this split view controller behave sensibly on iPad
+        splitViewController.preferredDisplayMode = .allVisible
+        splitViewController.delegate = SplitViewControllerDelegate.shared
     }
 
-    /// Creates and configures – but does not show! – a Safari view controller for a specific article. This might be called when the user tapped a story, or when they 3D touch one.
-    func readViewController(for article: NewsArticle) -> UIViewController {
-        // MARZIPAN: SafariServices is not available on macOS
-        #if os(iOS) && !MARZIPAN
-        let viewController = SFSafariViewController(url: article.url)
+    /// Creates and configures – but does not show! – an ArticleViewController for a specific article.
+    /// This might be called when the user tapped a story, or when they 3D touch one.
+    func articleViewController(for article: NewsArticle) -> UIViewController {
+        let viewController = WebViewController(url: article.url)
         return viewController
-        #else
-        return UIViewController()
-        #endif
     }
 
     /// Triggered when we already have a Safari view controller configured and ready to go, so we just show it.
     func startReading(using viewController: UIViewController, withURL url: URL) {
-        navigationController.present(viewController, animated: true)
+        let detailNav = CoordinatedNavigationController(rootViewController: viewController)
+        splitViewController.showDetailViewController(detailNav, sender: self)
         User.current.readNewsStory(forURL: url)
     }
 
-    /// Creates, configures, and presents a Safari view controller for a specific article.
+    /// Creates, configures, and presents an ArticleViewController for a specific article.
     func read(_ article: NewsArticle) {
-        // MARZIPAN: SafariServices is not available on macOS
-        #if os(iOS) && !MARZIPAN
-        let viewController = readViewController(for: article)
+        let viewController = articleViewController(for: article)
         startReading(using: viewController, withURL: article.url)
-        #else
-        UIApplication.shared.open(article.url)
         User.current.readNewsStory(forURL: article.url)
-        #endif
     }
 
     /// Loads the Hacking with Swift store.
     @objc func buyBooks() {
         let storeURL = URL(staticString: "https://www.hackingwithswift.com/store")
-
-        // MARZIPAN: SafariServices is not available on macOS
-        #if os(iOS) && !MARZIPAN
-        let viewController = SFSafariViewController(url: storeURL)
-        navigationController.present(viewController, animated: true)
-        #else
-        UIApplication.shared.open(storeURL)
-        #endif
+        let viewController = WebViewController(url: storeURL)
+        let detailNav = CoordinatedNavigationController(rootViewController: viewController)
+        splitViewController.showDetailViewController(detailNav, sender: self)
     }
 }
