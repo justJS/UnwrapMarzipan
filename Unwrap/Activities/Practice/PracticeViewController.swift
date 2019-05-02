@@ -9,7 +9,7 @@
 import UIKit
 
 /// The main view controller you see in  the Practice tab in the app.
-class PracticeViewController: UITableViewController, Storyboarded, UserTracking {
+class PracticeViewController: UITableViewController, UserTracking {
     var coordinator: PracticeCoordinator?
 
     /// This handles all the rows in our table view.
@@ -23,6 +23,7 @@ class PracticeViewController: UITableViewController, Storyboarded, UserTracking 
         title = "Practice"
         registerForUserChanges()
         tableView.dataSource = dataSource
+        tableView.register(PracticeTableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
     override func viewWillAppear(_ animated: Bool) {

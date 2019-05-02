@@ -7,6 +7,7 @@
 //
 
 import AVKit
+import SafariServices
 import UIKit
 
 // MARZIPAN: Some frameworks are not available on macOS
@@ -42,7 +43,7 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
 
     /// Shows the list of common Swift terms
     func showGlossary() {
-        let vc = GlossaryViewController.instantiate()
+        let vc = GlossaryViewController(style: .plain)
         navigationController.pushViewController(vc, animated: true)
     }
 
@@ -144,8 +145,8 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
     /// This is called when the user has submitted an answer to a review view controller. If it's a single selection view controller then we either finish reviewing or show another single selection view controller; if it's a multiple selection view controller then we're finished reviewing because that's only one screen.
     func answerSubmitted(from reviewViewController: UIViewController, wasCorrect: Bool) {
         if let single = reviewViewController as? SingleSelectReviewViewController {
-            if single.questionNumber == 3 {
-                // This is a single selection review and this is the third and final question, so we're done reviewing.
+            if single.questionNumber == 8 {
+                // This is a single selection review and this is the final question, so we're done reviewing.
                 finishedReviewing()
             } else {
                 // This is a single selection review but we haven't shown three yet, so show another in the sequence.
@@ -193,9 +194,14 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
         }
     }
 
-    // Single select reviews come in groups of three.
+    // Single select reviews come in groups of eight.
     func titleSuffix(for item: Sequenced) -> String {
-        return " (\(item.questionNumber)/3)"
+        return " (\(item.questionNumber)/8)"
+    }
+
+    func show(url: URL) {
+        let viewController = SFSafariViewController(url: url)
+        navigationController.present(viewController, animated: true)
     }
 
     @objc func back() {

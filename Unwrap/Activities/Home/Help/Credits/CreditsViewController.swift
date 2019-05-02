@@ -8,14 +8,27 @@
 
 import UIKit
 
-class CreditsViewController: UIViewController, Storyboarded {
-    @IBOutlet var textView: UITextView!
-    var coordinator: HomeCoordinator?
+class CreditsViewController: UIViewController {
+    let textView = UITextView()
+
+    override func loadView() {
+        view = UIView()
+
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.dataDetectorTypes = .link
+        textView.isEditable = false
+        view.addSubview(textView)
+
+        NSLayoutConstraint.activate([
+            textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        assert(coordinator != nil, "You must set a coordinator before presenting this view controller.")
 
         title = "Credits"
 

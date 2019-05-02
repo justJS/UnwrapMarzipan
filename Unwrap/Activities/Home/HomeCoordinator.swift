@@ -56,13 +56,13 @@ class HomeCoordinator: Coordinator, AlertShowing {
 
     /// Show the help screen.
     @objc func showHelp() {
-        let viewController = HelpViewController.instantiate()
+        let viewController = HelpViewController(style: .plain)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
 
     /// Start sharing the user's current score.
-    func shareScore() {
+    func shareScore(from sourceRect: CGRect) {
         let image = User.current.rankImage.imageForSharing
         let text = "I'm on level \(User.current.rankNumber) in Unwrap. Download it here: \(Unwrap.appURL)"
 
@@ -71,8 +71,8 @@ class HomeCoordinator: Coordinator, AlertShowing {
 
         // if we're on iPad there is nowhere sensible to anchor this from, so just center it
         if let popOver = alert.popoverPresentationController {
-            popOver.sourceView = self.navigationController.view
-            popOver.sourceRect = CGRect(x: self.navigationController.view.frame.midX, y: self.navigationController.view.frame.midY, width: 0, height: 0)
+            popOver.sourceView = navigationController.topViewController?.view
+            popOver.sourceRect = sourceRect
         }
 
         navigationController.present(alert, animated: true)
@@ -98,9 +98,10 @@ class HomeCoordinator: Coordinator, AlertShowing {
             }
         } else {
             // This badge isn't earned; just show details about it.
+            let badgeProgress = User.current.badgeProgress(badge)
             let alert = AlertViewController.instantiate()
             alert.title = badge.name
-            alert.body = badge.description.fromSimpleHTML()
+            alert.body = badge.description.centered() + badgeProgress
             alert.presentAsAlert(on: navigationController)
         }
     }
@@ -133,8 +134,7 @@ class HomeCoordinator: Coordinator, AlertShowing {
 
     /// Show credits for the app.
     @objc func showCredits() {
-        let credits = CreditsViewController.instantiate()
-        credits.coordinator = self
+        let credits = CreditsViewController()
         navigationController.pushViewController(credits, animated: true)
     }
 

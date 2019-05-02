@@ -36,16 +36,12 @@ class MultipleSelectReviewDataSource: NSObject, UITableViewDataSource, UITableVi
     init(review: StudyReview) {
         self.review = review
 
-        // have 3-5 correct answers, and the remaining (out of 8) being wrong
-        let correctAnswers = Int.random(in: 3...5)
-        let wrongAnswers = 8 - correctAnswers
-
-        for index in 0..<correctAnswers {
-            answers.append(Answer(text: review.correct[index].answer, subtitle: review.correct[index].reason, isCorrect: true, isSelected: false))
+        for answer in review.correct {
+            answers.append(Answer(text: answer.answer, subtitle: answer.reason, isCorrect: true, isSelected: false))
         }
 
-        for index in 0..<wrongAnswers {
-            answers.append(Answer(text: review.wrong[index].answer, subtitle: review.wrong[index].reason, isCorrect: false, isSelected: false))
+        for answer in review.wrong {
+            answers.append(Answer(text: answer.answer, subtitle: answer.reason, isCorrect: false, isSelected: false))
         }
 
         answers.shuffle()
@@ -82,7 +78,7 @@ class MultipleSelectReviewDataSource: NSObject, UITableViewDataSource, UITableVi
 
         // set the detail text label contents here to make sure we participate fully in Auto Layout cell sizing
         if isShowingAnswers {
-            cell.detailTextLabel?.attributedText = answer.subtitle.fromSimpleHTML().formattedAsExplanation()
+            cell.detailTextLabel?.attributedText = answer.subtitle.fixingLineWrapping().fromSimpleHTML().formattedAsExplanation()
         }
 
         return cell
@@ -107,7 +103,7 @@ class MultipleSelectReviewDataSource: NSObject, UITableViewDataSource, UITableVi
                 if answer.isCorrect {
                     cell.wrongAnswer()
                 } else {
-                    cell.correctAnswer()
+                    cell.unknownAnswer()
                 }
             }
         }
