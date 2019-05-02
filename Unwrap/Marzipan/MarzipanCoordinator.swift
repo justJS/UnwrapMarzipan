@@ -134,13 +134,13 @@ class MarzipanCoordinator: NSObject {
 
         switch index {
         case 1:
-            currentViewController = learn.navigationController
+            currentViewController = learn.splitViewController
         case 2:
-            currentViewController = practice.navigationController
+            currentViewController = practice.splitViewController
         case 3:
-            currentViewController = challenges.navigationController
+            currentViewController = challenges.splitViewController
         case 4:
-            currentViewController = news.navigationController
+            currentViewController = news.splitViewController
         default:
             currentViewController = home.navigationController
         }
@@ -176,22 +176,22 @@ class MarzipanCoordinator: NSObject {
 
     @objc func learnMenuBarItemClicked() {
         segmentedControl.setSelected(true, forSegment: 1)
-        currentViewController = learn.navigationController
+        currentViewController = learn.splitViewController
     }
 
     @objc func practiceMenuBarItemClicked() {
         segmentedControl.setSelected(true, forSegment: 2)
-        currentViewController = practice.navigationController
+        currentViewController = practice.splitViewController
     }
 
     @objc func challengesMenuBarItemClicked() {
         segmentedControl.setSelected(true, forSegment: 3)
-        currentViewController = challenges.navigationController
+        currentViewController = challenges.splitViewController
     }
 
     @objc func newsMenuBarItemClicked() {
         segmentedControl.setSelected(true, forSegment: 4)
-        currentViewController = news.navigationController
+        currentViewController = news.splitViewController
     }
 
     // MARK: AppDelegate
@@ -205,9 +205,9 @@ class MarzipanCoordinator: NSObject {
 
     func handle(shortcutItem: UIApplicationShortcutItem) {
         if shortcutItem.type == "com.hackingwithswift.unwrapswift.challenges" {
-            currentViewController = challenges.navigationController
+            currentViewController = challenges.splitViewController
         } else if shortcutItem.type == "com.hackingwithswift.unwrapswift.news" {
-            currentViewController = news.navigationController
+            currentViewController = news.splitViewController
         } else {
             fatalError("Unknown shortcut item type: \(shortcutItem.type).")
         }

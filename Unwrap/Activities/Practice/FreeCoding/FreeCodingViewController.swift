@@ -71,11 +71,12 @@ class FreeCodingViewController: UIViewController, Storyboarded, PracticingViewCo
         Unwrap.marzipanCoordinator?.setTitle(title!)
         Unwrap.marzipanCoordinator?.setupLeftBarButtonItem(text: "Skip", target: self, action: #selector(skip))
         #endif
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        showFirstTimeAlert(name: "FreeCoding", title: "Tip", message: "Unwrap is able to understand a variety of different solutions to each problem, but it's not perfect. If you enter a valid solution that is not accepted, please let us know so we can add it and make Unwrap better for everyone!")
+        showFirstTimeAlert(name: "FreeCoding", title: "Tip", message: "Unwrap is able to understand a variety of different solutions to each problem, but it's not perfect. If you enter a valid solution that is not accepted, please let us know so we can add it and make Unwrap better for everyone!", on: self)
     }
 
     /// Shows the hint button. This gets called in more than one place, because we replace it with a Done button when the text view is being edited.

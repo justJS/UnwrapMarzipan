@@ -138,7 +138,7 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
         alert.title = activeStudyReview.title
         alert.alertType = .postscript
         alert.body = activeStudyReview.postscript.fromSimpleHTML()
-        alert.presentAsAlert(on: navigationController)
+        alert.presentAsAlert(on: splitViewController)
     }
 
     /// This will get called when the postscript has been dismissed, so we can move on to review.
@@ -153,7 +153,7 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
         #if os(iOS) && !MARZIPAN
         SwiftEntryKit.dismiss(with: handler)
         #else
-        navigationController.dismiss(animated: true, completion: handler)
+        splitViewController.dismiss(animated: true, completion: handler)
         #endif
     }
 
@@ -224,6 +224,6 @@ class LearnCoordinator: Coordinator, Awarding, Skippable, AlertHandling, AnswerH
     }
 
     @objc func back() {
-        navigationController.popViewController(animated: true)
+        splitViewController.popToRootViewController(animated: true)
     }
 }

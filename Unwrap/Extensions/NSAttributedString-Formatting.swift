@@ -10,11 +10,11 @@ import UIKit
 
 extension NSAttributedString {
 
-    static func html(chapterName: String) -> String {
+    static func html(chapterName: String, width: CGFloat) -> String {
         let bodyContents = String(bundleName: "\(chapterName).html")
 
         // Merge the wrapper with this page's content.
-        var finalHTML = String.wrapperHTML(allowTheming: true).replacingOccurrences(of: "[BODY]", with: bodyContents)
+        var finalHTML = String.wrapperHTML(allowTheming: true, width: width).replacingOccurrences(of: "[BODY]", with: bodyContents)
 
         // Finally, replace any instances of [VIDEO-NUMBER] with the correct chapter and section.
         finalHTML = finalHTML.replacingOccurrences(of: "[VIDEO-NUMBER]", with: chapterName)

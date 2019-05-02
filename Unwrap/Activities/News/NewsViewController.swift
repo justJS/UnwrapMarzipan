@@ -9,7 +9,7 @@
 import UIKit
 
 /// The view controller you see in the News tab in the app.
-class NewsViewController: UITableViewController, UIViewControllerPreviewingDelegate {
+class NewsViewController: UITableViewController {
     var coordinator: NewsCoordinator?
 
     /// This handles all the rows in our table view, including downloading news.

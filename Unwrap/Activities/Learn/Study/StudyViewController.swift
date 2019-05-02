@@ -36,7 +36,6 @@ class StudyViewController: UIViewController, TappableTextViewDelegate {
         studyTextView.linkDelegate = self
         view = studyTextView
         #else
-        studyWebView.loadHTMLString(NSAttributedString.html(chapterName: chapter), baseURL: Bundle.main.resourceURL)
         view = studyWebView
         #endif
     }
@@ -50,13 +49,20 @@ class StudyViewController: UIViewController, TappableTextViewDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: coordinator, action: #selector(LearnCoordinator.finishedStudying))
 
         // always include the safe area insets in the scroll view content adjustment
+        #if os(iOS) && !MARZIPAN
         studyTextView.contentInsetAdjustmentBehavior = .always
+        #endif
     }
 
     // It's important we do content loading here, because a) loadView() is too early – here the text view has fully loaded and has its correct size, which means the movie image will be rendered correctly, and b) viewDidLayoutSubviews() is too late – it causes a layout loop.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        #if os(iOS) && !MARZIPAN
         studyTextView.loadContent(chapter)
+        #else
+        studyWebView.loadHTMLString(NSAttributedString.html(chapterName: chapter, width: studyWebView.bounds.width), baseURL: Bundle.main.resourceURL)
+        #endif
 
         // MARZIPAN: Set up macOS navigation bar items
         #if MARZIPAN
@@ -95,7 +101,11 @@ class StudyViewController: UIViewController, TappableTextViewDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         // If our view controller is changing size we need to reload our content to make sure the movie view at the top correctly fills the full width of the screen.
         coordinator.animate(alongsideTransition: nil) { ctx in
+            #if os(iOS) && !MARZIPAN
             self.studyTextView.loadContent(self.chapter)
+            #else
+            self.studyWebView.loadHTMLString(NSAttributedString.html(chapterName: self.chapter, width: self.studyWebView.bounds.width), baseURL: Bundle.main.resourceURL)
+            #endif
         }
     }
 }

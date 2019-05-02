@@ -45,7 +45,7 @@ class PracticeCoordinator: Coordinator, Awarding, Skippable, AnswerHandling, Ale
     func startPracticing(_ activity: PracticeActivity.Type) -> Bool {
         if activity.isLocked {
             // They can't access this practice activity yet.
-            showAlert(title: "Activity Locked", body: "You need to complete the chapter \"\(activity.lockedUntil)\" before you can practice this.")
+            showAlert(title: "Activity Locked", body: "You need to complete the chapter \"\(activity.lockedUntil)\" before you can practice this.", on: splitViewController)
             splitViewController.showDetailViewController(PleaseSelectViewController.instantiate(), sender: self)
             return false
         } else {

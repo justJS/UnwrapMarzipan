@@ -47,11 +47,11 @@ extension UIViewController: AlertShowing {
     }
 
     /// Shows an alert only if it hasn't already been shown.
-    func showFirstTimeAlert(name: String, title: String, message: String) {
+    func showFirstTimeAlert(name: String, title: String, message: String, on: UIViewController) {
         let defaultsName = "Shown\(name)"
 
         if UserDefaults.standard.bool(forKey: defaultsName) == false {
-            showAlert(title: title, body: message)
+            showAlert(title: title, body: message, on: on)
             UserDefaults.standard.set(true, forKey: defaultsName)
         }
     }

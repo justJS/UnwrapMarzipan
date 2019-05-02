@@ -10,6 +10,7 @@ body {
 img {
 	width: [IMAGEWIDTH];
 	height: auto;
+    text-align: center!important;
 }
 
 p.mainImage {

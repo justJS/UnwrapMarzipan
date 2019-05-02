@@ -90,9 +90,9 @@ extension String {
         #else
         styleContents = styleContents.replacingOccurrences(of: "[FONTSIZE]", with: "100")
         #endif
-        
+
         // Force images to be the natural screen width.
-        styleContents = styleContents.replacingOccurrences(of: "[IMAGEWIDTH]", with: "\(width)px")
+        styleContents = styleContents.replacingOccurrences(of: "[IMAGEWIDTH]", with: "\(width / 2)px")
 
         // Now merge in our adjusted CSS with the main HTML wrapper.
         wrapperContents = wrapperContents.replacingOccurrences(of: "[STYLE]", with: styleContents)

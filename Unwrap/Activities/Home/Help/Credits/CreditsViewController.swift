@@ -41,15 +41,4 @@ class CreditsViewController: UIViewController {
         // when the view is laid out.
         textView.setContentOffset(.zero, animated: false)
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // MARZIPAN: Set up macOS navigation bar items
-        #if MARZIPAN
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        Unwrap.marzipanCoordinator?.resetNavigationBar()
-        Unwrap.marzipanCoordinator?.setupLeftBarButtonItem(text: "Back", target: coordinator, action: #selector(HomeCoordinator.back))
-        #endif
-    }
 }

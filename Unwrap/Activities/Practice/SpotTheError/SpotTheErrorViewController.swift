@@ -64,7 +64,7 @@ class SpotTheErrorViewController: UIViewController, Storyboarded, PracticingView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        showFirstTimeAlert(name: "SpotTheError", title: "Tip", message: "You should mentally run the code from top to bottom, meaning that if line 3 says an integer should be returned and line 10 tries to return a string, line 10 is the wrong one.")
+        showFirstTimeAlert(name: "SpotTheError", title: "Tip", message: "You should mentally run the code from top to bottom, meaning that if line 3 says an integer should be returned and line 10 tries to return a string, line 10 is the wrong one.", on: self)
 
         // warn users there might be more cells to scroll through
         tableView.flashScrollIndicators()
